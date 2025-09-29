@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import logo from '@/assets/logo.png';
+import name from '@/assets/name.png';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -42,16 +44,22 @@ const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="bg-gradient-primary p-2 rounded-lg">
-                <div className="w-8 h-8 bg-primary-foreground rounded flex items-center justify-center">
-                  <span className="text-primary font-bold text-lg">P</span>
+            <div className="p-2 rounded-lg bg-white shadow-md">
+                  <img
+                    src={logo} // replace with actual path
+                    alt="Aneni Remedies Logo"
+                    className="w-10 h-10 object-contain"
+                  />
                 </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-foreground">PharmaCorp</span>
-                <span className="text-xs text-muted-foreground">Global Excellence</span>
-              </div>
+
+                {/* Company Name Image */}
+                <div>
+                  <img
+                    src={name}// replace with actual path
+                    alt="Aneni Remedies"
+                    className="h-10 md:h-12 object-contain"
+                  />
+                </div>
             </Link>
 
             {/* Desktop Navigation */}
