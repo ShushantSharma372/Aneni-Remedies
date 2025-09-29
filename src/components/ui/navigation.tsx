@@ -44,7 +44,8 @@ const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="p-2 rounded-lg bg-white shadow-md">
+            <Link to="/" className="flex items-center space-x-2">
+                <div className="p-2 rounded-lg bg-white shadow-md">
                   <img
                     src={logo} // replace with actual path
                     alt="Aneni Remedies Logo"
