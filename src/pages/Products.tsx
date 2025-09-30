@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,11 +31,44 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  // --- Catalogue states ---
+  const [allMedicines, setAllMedicines] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
+
+  useEffect(() => {
+    fetch('/data/Simpleproducts.json')
+      .then((res) => res.json())
+      .then((data) => setAllMedicines(data))
+      .catch((err) => console.error('Error loading medicines:', err));
+  }, []);
+
   const categories = [
-    { value: 'all', label: 'All Products' },
+    { value: 'all', label: 'All Products' }, 
+    { value: 'ANTI-ALLERGICS/ANTI-COLD/ANTI-ASTHMATICS', label: 'Anti-Allergics/Anti-Cold/Anti-Asthmatics' },
+    { value: 'ANTI-CHOLESTEREMIC', label: 'Anti-Cholesteremic' },
+    { value: 'ANTI-DIABETIC', label: 'Anti-Diabetic' },
+    { value: 'ANTI-DIARRHEAL', label: 'Anti-Diarrheal' },
+    { value: 'ANTI-DIARRHOEALS, ANTI-SPASMODICS, ANTI-PROTOZOALS & LAXATIVES', label: 'Anti-Diarrhoeals, Anti-Spasmodics, Anti-Protozoals & Laxatives' },
+    { value: 'ANTI-EMETICS/ANTI-NAUSEANTS', label: 'Anti-Emetics/Anti-Nauseants' },
+    { value: 'ANTI-FUNGALS & ANTI-LEPROTICS', label: 'Anti-Fungals & Anti-Leprotics' },
+    { value: 'anti-fungal', label: 'Anti-Fungal' },
+    { value: 'ANTI-MALARIALS', label: 'Anti-Malarials' },
+    { value: 'ANTI-PROTOZOAL', label: 'Anti-Protozoal' },
+    { value: 'ANTI-VIRAL', label: 'Anti-Viral' },
+    { value: 'ANTACIDS/ANTI-ULCERANTS/ANTI-GERD', label: 'Antacids/Anti-Ulcerants/Anti-GERD' },
+    { value: 'BETA LACTUM ANTIBIOTICS (CEPHALOSPORIN ANTIBIOTICS)', label: 'Beta Lactum Antibiotics (Cephalosporin Antibiotics)' },
     { value: 'bulk-drugs', label: 'Bulk Drugs' },
-    { value: 'pharma-supplies', label: 'Pharma Supplies' },
+    { value: 'CARDIOVASCULAR', label: 'Cardiovascular' },
     { value: 'contract-manufacturing', label: 'Contract Manufacturing' },
+    { value: 'DIURETICS', label: 'Diuretics' },
+    { value: 'ERECTILE DYSFUNCTION', label: 'Erectile Dysfunction' },
+    { value: 'NON-BETA LACTUM ANTIBIOTICS / ANTIBACTERIAL', label: 'Non-Beta Lactum Antibiotics / Antibacterial' },
+    { value: 'narcotics', label: 'Narcotics' },
+    { value: 'pharma-supplies', label: 'Pharma Supplies' },
+    { value: 'STEROIDS', label: 'Steroids' },
+    { value: 'tablets', label: 'Tablets' },
+    { value: 'General', label: 'General' },
     { value: 'regulatory-services', label: 'Regulatory Services' },
   ];
 
@@ -118,12 +151,23 @@ const Products = () => {
     },
   ];
 
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+  const filterFunc = (item) => {
+    const matchesSearch =
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (item.description && item.description.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
-  });
+  };
+
+  const filteredProducts = products.filter(filterFunc);
+  const filteredAll = allMedicines.filter(filterFunc);
+
+  const totalPages = Math.ceil(filteredAll.length / itemsPerPage);
+  const paginatedAll = filteredAll.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -332,6 +376,66 @@ const Products = () => {
               </Card>
             ))}
           </div>
+
+          {/* Catalogue List (JSON Data + Pagination) */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-6">Complete Catalogue</h2>
+
+          <div className="divide-y rounded-lg border">
+            {paginatedAll.map((med) => (
+              <div
+                key={med.id}
+                className="flex items-center justify-between p-4 hover:bg-muted/30 transition-colors"
+              >
+                <div>
+                  <p className="font-medium">{med.name}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {categories.find((c) => c.value === med.category)?.label}
+                  </p>
+                </div>
+                <Button asChild size="sm">
+                  <Link to="/contact">
+                    <Mail className="mr-2 h-4 w-4" /> Request
+                  </Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-2 mt-6">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => p - 1)}
+              >
+                Prev
+              </Button>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <Button
+                  key={i + 1}
+                  size="sm"
+                  variant={currentPage === i + 1 ? 'default' : 'outline'}
+                  onClick={() => setCurrentPage(i + 1)}
+                >
+                  {i + 1}
+                </Button>
+              ))}
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((p) => p + 1)}
+              >
+                Next
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-16">
