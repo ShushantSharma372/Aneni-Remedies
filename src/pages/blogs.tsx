@@ -1,115 +1,148 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/ui/footer';
 import { Card, CardDescription, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { X, Calendar, User } from 'lucide-react';
-
+import { Calendar, ArrowLeft } from 'lucide-react';
 import { blogs, Blog } from '@/blogsContent';
 
 const Blogs = () => {
   const [activeBlog, setActiveBlog] = useState<Blog | null>(null);
+  const [scrollPosition, setScrollPosition] = useState(0); // 👈 new state
+
+  // Scroll to top when opening an article
+  useEffect(() => {
+    if (activeBlog) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [activeBlog]);
+
+  const handleReadMore = (blog: Blog) => {
+    // Save current scroll position
+    setScrollPosition(window.scrollY);
+    setActiveBlog(blog);
+  };
+
+  const handleBack = () => {
+    setActiveBlog(null);
+
+    // Restore previous scroll position after a short delay
+    setTimeout(() => {
+      window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+    }, 200);
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero */}
-      <section className="py-20 bg-gradient-subtle text-center">
-        <div className="container mx-auto px-4">
-        <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              PharmaCorp
-                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Insights</span>
-              </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                Explore our latest articles, research updates, and thought <br></br>
-                leadership in pharmaceuticals and healthcare.
-
-                </p>
+      {/* Hero section hidden in article view */}
+      {!activeBlog && (
+        <section className="py-20 bg-gradient-subtle text-center">
+          <div className="container mx-auto px-4 space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+              A N E N I <span className="bg-gradient-hero bg-clip-text text-transparent">Insights</span>
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Explore our latest articles, research updates, and thought <br />
+              leadership in pharmaceuticals and healthcare.
+            </p>
           </div>
-          
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Blog Cards */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 space-y-10">
-          {blogs.map((blog) => (
-            <Card
-              key={blog.id}
-              className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 overflow-hidden"
-            >
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="md:col-span-1 h-48 md:h-full overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="md:col-span-2 flex flex-col justify-between p-6">
-                  <div>
-                    <Badge variant="secondary" className="mb-3">Blog</Badge>
-                    <CardTitle className="text-2xl mb-3">{blog.title}</CardTitle>
-                    <CardDescription className="text-base leading-relaxed mb-4">
-                      {blog.excerpt}
-                    </CardDescription>
+      {/* Conditional Rendering */}
+      {!activeBlog ? (
+        // -------- Blog Grid View --------
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-semibold text-center mb-12">Latest Articles</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {blogs.map((blog) => (
+                <Card
+                  key={blog.id}
+                  className="
+                    overflow-hidden border-0
+                    shadow-lg shadow-primary/10
+                    hover:shadow-[0_0_35px_rgba(99,102,241,0.4)]
+                    transition-all duration-500 flex flex-col
+                    bg-gradient-card backdrop-blur-sm
+                  "
+                >
+                  <div className="h-56 overflow-hidden">
+                    <img
+                      src={blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <div className="flex items-center gap-4">
-                      <span className="flex items-center gap-1"><User size={16}/> {blog.author}</span>
-                      <span className="flex items-center gap-1"><Calendar size={16}/> {blog.date}</span>
+
+                  <div className="flex-1 p-6 flex flex-col justify-between">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2 flex items-center gap-1">
+                        <Calendar size={14} /> {blog.date}
+                      </p>
+                      <CardTitle className="text-xl font-semibold mb-3">{blog.title}</CardTitle>
+                      <CardDescription className="text-base leading-relaxed mb-4">
+                        {blog.excerpt}
+                      </CardDescription>
+
+                      {/* <div className="flex flex-wrap gap-2 mb-4">
+                        {blog.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary">{tag}</Badge>
+                        ))}
+                      </div> */}
                     </div>
-                    <Button variant="outline" size="sm" onClick={() => setActiveBlog(blog)}>
+
+                    <Button className="w-full mt-auto" onClick={() => handleReadMore(blog)}>
                       Read More
                     </Button>
                   </div>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Modal */}
-      {activeBlog && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-2 md:px-6">
-          <div className="bg-background w-full h-[95vh] rounded-2xl shadow-glow overflow-hidden relative flex flex-col">
-            
-            {/* Close button */}
-            <button
-              className="absolute top-4 right-4 p-2 rounded-full bg-gradient-glass hover:bg-primary hover:text-primary-foreground transition"
-              onClick={() => setActiveBlog(null)}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
+        // -------- Single Article View --------
+        <section className="py-16 bg-background">
+          <div className="mx-auto px-4 md:px-8 lg:px-16 max-w-5xl space-y-8">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2"
+              onClick={handleBack}
             >
-              <X size={20} />
-            </button>
+              <ArrowLeft size={16} /> Back to Articles
+            </Button>
 
-            {/* Blog Image */}
-            <div className="h-72 overflow-hidden shrink-0">
+            <div className="rounded-2xl overflow-hidden shadow-lg shadow-primary/10">
               <img
                 src={activeBlog.image}
                 alt={activeBlog.title}
-                className="w-full h-full object-cover"
+                className="w-full h-80 object-cover"
               />
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 p-8 space-y-6 overflow-y-auto">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold">{activeBlog.title}</h2>
-                <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1"><User size={16}/> {activeBlog.author}</span>
-                  <span className="flex items-center gap-1"><Calendar size={16}/> {activeBlog.date}</span>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <h2 className="text-4xl font-bold">{activeBlog.title}</h2>
+              <p className="text-muted-foreground text-sm flex items-center gap-1">
+                <Calendar size={14} /> {activeBlog.date}
+              </p>
+
+              {/* <div className="flex flex-wrap gap-2 mb-4">
+                {activeBlog.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary">{tag}</Badge>
+                ))}
+              </div> */}
+
               <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
                 {activeBlog.content}
               </p>
             </div>
           </div>
-        </div>
+        </section>
       )}
 
       <Footer />
