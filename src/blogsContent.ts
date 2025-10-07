@@ -11,6 +11,7 @@ export interface Blog {
     content: string;
     author: string;
     date: string;
+    tags: string;
     image: string;
   }
   
@@ -25,6 +26,7 @@ export interface Blog {
   a 40% improvement in patient response...`,
       author: 'Dr. Emily Carter',
       date: 'Sep 15, 2025',
+      tags: '',
       image: blog1,
     },
     {
@@ -36,6 +38,7 @@ export interface Blog {
   we guarantee safety, efficacy, and trust in every formulation we bring to the market...`,
       author: 'Michael Lee',
       date: 'Aug 20, 2025',
+      tags: '',
       image: blog2,
     },
     {
@@ -79,6 +82,7 @@ is indicated by the large number of megalithic monuments dating from this period
 [92] as well as by nearby traces of agriculture, irrigation tanks, and craft traditions.[92]`,
       author: 'Sarah Williams',
       date: 'Jul 10, 2025',
+      tags: '',
       image: blog3,
     },
   ];
