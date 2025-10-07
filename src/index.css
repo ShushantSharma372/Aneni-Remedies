@@ -17,7 +17,7 @@
     --accent-foreground: 0 0% 100%;
 
     /* Background / Foreground */
-    --background: 277 25% 95%;     /* light lavender background */
+    --background: 0 0% 100%;    /* light lavender background */
     --foreground: 277 20% 25%;     /* dark purple/gray for text */
 
     /* Cards & Popovers */
