@@ -7,6 +7,16 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/ui/footer';
+import medilan from '@/assets/medilan.png';
+import dapalozin from '@/assets/dapalozin.jpeg';
+import germil from '@/assets/germil.png';
+import krieon from '@/assets/krieon.png';
+import enimet from '@/assets/enimet.png';
+import medo from '@/assets/medospan.png';
+import vecko from '@/assets/veckolin.jpeg';
+import levo from '@/assets/levo.jpeg';
+import kalra from '@/assets/kalra.png';
+
 import { 
   Search, 
   Filter,
@@ -16,6 +26,8 @@ import {
   Shield,
   Truck,
   Globe2,
+  Syringe,
+  Tablets,
   Download,
   Heart,
   Pill,
@@ -75,81 +87,104 @@ const Products = () => {
   const products = [
     {
       id: 1,
-      name: 'Paracetamol API',
-      category: 'bulk-drugs',
-      description: 'High-purity paracetamol active pharmaceutical ingredient with USP/BP compliance for pain management formulations.',
-      specifications: ['USP Grade', 'GMP Certified', 'COA Available'],
-      applications: ['Analgesic formulations', 'Antipyretic preparations'],
-      packaging: '25kg fiber drums',
-      certifications: ['WHO-GMP', 'ISO 9001:2015'],
+      name: 'MEDILAN',
+      salt: 'Nimesulide',
+      power: '100mg',
+      type: 'Tablet',
+      description: 'Nimesulide tablet for pain relief and anti-inflammatory use.',
       status: 'Available',
-      strength: '99.5% purity',
-      icon: Microscope,
+      icon: Tablets,
+      image: medilan,
     },
     {
       id: 2,
-      name: 'Ibuprofen Tablets',
-      category: 'pharma-supplies',
-      description: 'Ready-to-market ibuprofen tablets in various strengths with complete documentation and regulatory approvals.',
-      specifications: ['200mg, 400mg', 'Blister packed', 'Shelf life: 3 years'],
-      applications: ['Pain management', 'Anti-inflammatory treatment'],
-      packaging: '10x10 tablets per box',
-      certifications: ['FDA Registered', 'CE Marked'],
+      name: 'ENIMET 500',
+      salt: 'Metformin Hydrochloride (Hypoglycemic agent)',
+      power: '500mg',
+      type: 'Tablet',
+      description: 'Oral hypoglycemic agent for managing type 2 diabetes.',
       status: 'Available',
-      strength: '200mg, 400mg',
-      icon: Pill,
+      icon: Tablets,
+      image: enimet,
     },
     {
       id: 3,
-      name: 'Custom Formulation Services',
-      category: 'contract-manufacturing',
-      description: 'End-to-end contract manufacturing for tablets, capsules, and liquid formulations with complete R&D support.',
-      specifications: ['R&D Support', 'Scale-up Services', 'Quality Testing'],
-      applications: ['Generic development', 'Brand manufacturing'],
-      packaging: 'Custom packaging options',
-      certifications: ['WHO-GMP', 'ISO 14001'],
+      name: 'KRIEON - N',
+      salt: 'Pancreatin (Digestive Enzyme)',
+      power: '10000 IU',
+      type: 'Capsule',
+      description: 'Digestive enzyme supplement supporting pancreatic insufficiency.',
       status: 'Available',
-      icon: FlaskConical,
+      icon: Pill,
+      image: krieon,
     },
     {
       id: 4,
-      name: 'Regulatory Documentation',
-      category: 'regulatory-services',
-      description: 'Comprehensive regulatory support including dossier preparation, submissions, and post-approval maintenance.',
-      specifications: ['CTD Format', 'Regional Expertise', 'Post-approval support'],
-      applications: ['Product registration', 'Regulatory compliance'],
-      packaging: 'Digital documentation',
-      certifications: ['Regulatory Expertise', 'Global Standards'],
+      name: 'GERMIL M1',
+      salt: 'Glimepiride + Metformin Hydrochloride (Hypoglycemic agent)',
+      power: '1mg + 500mg',
+      type: 'Tablet',
+      description: 'Combination therapy for type 2 diabetes mellitus.',
       status: 'Available',
-      icon: Shield,
+      icon: Tablets,
+      image: germil,
     },
     {
       id: 5,
-      name: 'Amoxicillin API',
-      category: 'bulk-drugs',
-      description: 'Beta-lactam antibiotic API with excellent stability profile and comprehensive impurity testing for antibiotic formulations.',
-      specifications: ['EP/USP Grade', 'Cold chain available', 'Impurity profile'],
-      applications: ['Antibiotic formulations', 'Pediatric preparations'],
-      packaging: '1kg, 5kg containers',
-      certifications: ['WHO-GMP', 'COPP'],
+      name: 'MEDOSPAN',
+      salt: 'Betamethasone',
+      power: '2mg + 5mg/ml',
+      type: 'Injection Suspension',
+      description: 'Corticosteroid injection used for inflammation and allergy management.',
       status: 'Available',
-      strength: '99.0% min',
-      icon: Zap,
+      icon: Syringe,
+      image: medo,
     },
     {
       id: 6,
-      name: 'Vitamin C Effervescent',
-      category: 'pharma-supplies',
-      description: 'High-quality vitamin C effervescent tablets with excellent dissolution profile and pleasant orange flavor.',
-      specifications: ['1000mg strength', 'Orange flavor', 'Tube packaging'],
-      applications: ['Nutritional supplements', 'Immune support'],
-      packaging: '20 tablets per tube',
-      certifications: ['FDA Registered', 'Halal Certified'],
+      name: 'VEKCOLIN',
+      salt: 'Clindamycin + Clotrimazole + Tinidazole',
+      type: 'Softgel Capsule',
+      description: 'Antibacterial, antifungal, and antiprotozoal combination capsule.',
       status: 'Available',
-      strength: '1000mg',
-      icon: Heart,
+      icon: Pill,
+      image: vecko,
+    },
+    {
+      id: 7,
+      name: 'DAPALOZIN',
+      salt: 'Dapagliflozin',
+      power: '10mg',
+      type: 'Tablet',
+      description: 'SGLT2 inhibitor for type 2 diabetes management.',
+      status: 'Available',
+      icon: Tablets,
+      image: dapalozin,
+    },
+    {
+      id: 8,
+      name: 'LEVO-IN',
+      salt: 'Levocarnitine',
+      power: '200mg/ml',
+      type: 'Injection',
+      description: 'Nutritional supplement supporting fat metabolism and energy.',
+      status: 'Available',
+      icon: Tablets,
+      image: levo,
+    },
+    {
+      id: 9,
+      name: 'KALKRA D3',
+      salt: 'Vitamin D3',
+      power: '500mg',
+      type: 'Capsule',
+      description: 'Vitamin D3 supplement for bone health and calcium absorption.',
+      status: 'Available',
+      icon: Pill,
+      image: kalra,
     },
   ];
+  
 
   const filterFunc = (item) => {
     const matchesSearch =
@@ -180,7 +215,7 @@ const Products = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                Our Products
+               
               </Badge>
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
@@ -317,65 +352,67 @@ const Products = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Card key={product.id} className="border-0 shadow-elegant hover:shadow-glow transition-all duration-500 group bg-gradient-card backdrop-blur-sm overflow-hidden">
-                <div className="relative h-48 bg-gradient-primary overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-glass"></div>
-                  <div className="relative flex items-center justify-center h-full">
-                    <product.icon className="h-16 w-16 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge 
-                      variant={product.status === 'Available' ? 'default' : 'secondary'}
-                      className="shadow-glass backdrop-blur-sm"
-                    >
-                      {product.status}
-                    </Badge>
-                  </div>
-                </div>
-                
-                <CardHeader>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-                    {product.name}
-                  </CardTitle>
-                </CardHeader>
-                
-                <CardContent className="space-y-4">
-                  <CardDescription className="leading-relaxed text-base">
-                    {product.description}
-                  </CardDescription>
-                  
-                  <div className="space-y-2 p-4 bg-gradient-glass rounded-lg">
-                    <div className="text-sm text-muted-foreground">
-                      <strong>Category:</strong> {categories.find(cat => cat.value === product.category)?.label}
-                    </div>
-                    {product.strength && (
-                      <div className="text-sm text-muted-foreground">
-                        <strong>Strength:</strong> {product.strength}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex gap-3 pt-4">
-                    <Button variant="default" size="sm" className="flex-1 group/btn" asChild>
-                      <Link to="/contact">
-                        <Mail className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform" />
-                        Request Quote
-                      </Link>
-                    </Button>
-                    {/* <Button variant="outline" size="sm" className="group/btn" asChild>
-                      <Link to="/downloads">
-                        <Download className="h-4 w-4 group-hover/btn:scale-110 transition-transform" />
-                      </Link>
-                    </Button> */}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+{/* --- Products Grid --- */}
+<section className="py-16 bg-background">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {filteredProducts.map((product) => (
+        <Card
+          key={product.id}
+          className="
+            border-0
+            shadow-lg shadow-primary/10
+            hover:shadow-[0_0_35px_rgba(99,102,241,0.4)]
+            transition-all duration-500
+            group bg-gradient-card backdrop-blur-sm overflow-hidden
+          "
+        >
+          <div className="relative h-48 bg-white overflow-hidden flex items-center justify-center">
+            <img
+              src={product.image || '/images/default.png'}
+              alt={product.name}
+              className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute top-4 right-4">
+              <Badge
+                variant={product.status === 'Available' ? 'default' : 'secondary'}
+                className="shadow-glass backdrop-blur-sm"
+              >
+                {product.status}
+              </Badge>
+            </div>
           </div>
+
+          <CardHeader>
+            <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+              {product.name}
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent className="space-y-4">
+            <CardDescription className="leading-relaxed text-base">
+              {product.description}
+            </CardDescription>
+
+            <div className="space-y-2 p-4 bg-gradient-glass rounded-lg">
+              <div className="text-sm text-muted-foreground"><strong>Salt:</strong> {product.salt}</div>
+              {product.power && <div className="text-sm text-muted-foreground"><strong>Power:</strong> {product.power}</div>}
+              <div className="text-sm text-muted-foreground"><strong>Type:</strong> {product.type}</div>
+            </div>
+
+            <div className="flex gap-3 pt-4">
+              <Button variant="default" size="sm" className="flex-1 group/btn" asChild>
+                <Link to="/contact">
+                  <Mail className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform" />
+                  Request Quote
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
 
           {/* Catalogue List (JSON Data + Pagination) */}
       <section className="py-16 bg-background">
@@ -405,6 +442,7 @@ const Products = () => {
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
+            
             <div className="flex justify-center gap-2 mt-6">
               <Button
                 variant="outline"
@@ -414,7 +452,7 @@ const Products = () => {
               >
                 Prev
               </Button>
-              {Array.from({ length: totalPages }, (_, i) => (
+              {/* {Array.from({ length: totalPages }, (_, i) => (
                 <Button
                   key={i + 1}
                   size="sm"
@@ -423,7 +461,7 @@ const Products = () => {
                 >
                   {i + 1}
                 </Button>
-              ))}
+              ))} */}
               <Button
                 variant="outline"
                 size="sm"
