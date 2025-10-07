@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Download, FileText, Award } from 'lucide-react';
+import logo from '@/assets/logo.png';
+import name from '@/assets/name.png';
 
 const Footer = () => {
   return (
@@ -10,15 +12,24 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="bg-gradient-primary p-2 rounded-lg">
-                <div className="w-6 h-6 bg-primary-foreground rounded flex items-center justify-center">
-                  <span className="text-primary font-bold">P</span>
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="p-2 rounded-lg bg-white shadow-md">
+                  <img
+                    src={logo} // replace with actual path
+                    alt="Aneni Remedies Logo"
+                    className="w-10 h-10 object-contain"
+                  />
                 </div>
-              </div>
-              <div>
-                <span className="text-lg font-bold text-foreground">PharmaCorp</span>
-                <p className="text-xs text-muted-foreground">Global Excellence</p>
-              </div>
+
+                {/* Company Name Image */}
+                <div>
+                  <img
+                    src={name}// replace with actual path
+                    alt="Aneni Remedies"
+                    className="h-10 md:h-12 object-contain"
+                  />
+                </div>
+            </Link>
             </div>
             <p className="text-sm text-muted-foreground">
               Leading pharmaceutical company delivering quality healthcare solutions across Africa, ASEAN, and the Americas with over 20 years of excellence.
