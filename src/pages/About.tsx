@@ -6,21 +6,13 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import researchLab from '@/assets/research-lab.jpg';
-import manufacturing from '@/assets/manufacturing.jpg';
-import qualityControl from '@/assets/quality-control.jpg';
-import globalNetwork from '@/assets/global-network.jpg';
 import { 
   Award, 
-  Users, 
   Globe2, 
-  Building2, 
   Shield, 
   Heart,
   Target,
   Eye,
-  CheckCircle,
-  FlaskConical,
-  Microscope,
   UserCheck,
   ArrowRight,
   TrendingUp
@@ -29,62 +21,51 @@ import {
 const About = () => {
   const leadership = [
     {
-      name: 'Dr. Robert Johnson',
-      title: 'Chief Executive Officer',
-      experience: '25+ years in pharmaceutical industry',
-      education: 'PhD in Pharmaceutical Sciences, Harvard University',
+      name: 'Dr. A. Sharma',
+      title: 'Founder & Managing Director',
+      experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
+      education: 'MD, MBA in Healthcare Management',
     },
     {
-      name: 'Sarah Williams',
-      title: 'Chief Operating Officer',
-      experience: '20+ years in global operations',
-      education: 'MBA Operations Management, Wharton',
+      name: 'Dr. P. Nair',
+      title: 'Director – Exports & Business Development',
+      experience: 'Extensive experience in international marketing and regulatory affairs',
+      education: 'PhD in Pharmaceutical Sciences',
     },
     {
-      name: 'Dr. Michael Chen',
-      title: 'Chief Scientific Officer',
-      experience: '22+ years in R&D leadership',
-      education: 'PhD Biochemistry, Stanford University',
+      name: 'Dr. R. Mehta',
+      title: 'Director – Manufacturing & Quality',
+      experience: '15+ years in large-scale pharmaceutical production and quality assurance',
+      education: 'M.Pharm, Certified in GMP & Regulatory Compliance',
     },
     {
-      name: 'Jennifer Martinez',
-      title: 'Chief Quality Officer',
-      experience: '18+ years in quality assurance',
-      education: 'MS Regulatory Affairs, Johns Hopkins',
+      name: 'Dr. S. Khan',
+      title: 'Director – Research & Development',
+      experience: 'Deep expertise in formulation development and product innovation',
+      education: 'PhD in Pharmaceutics',
     },
-  ];
-
-  const milestones = [
-    { year: '2004', event: 'Company founded with focus on quality pharmaceuticals' },
-    { year: '2008', event: 'First international expansion to African markets' },
-    { year: '2012', event: 'ISO 9001:2015 certification achieved' },
-    { year: '2015', event: 'WHO-GMP certification obtained' },
-    { year: '2018', event: 'ASEAN market entry and distribution network established' },
-    { year: '2021', event: 'FDA registration completed for US market entry' },
-    { year: '2023', event: 'Reached 500+ healthcare partners globally' },
-    { year: '2024', event: '20th anniversary and continued expansion' },
   ];
 
   const certifications = [
     {
-      name: 'ISO 9001:2015',
-      description: 'Quality Management System',
-      issuer: 'International Organization for Standardization',
-    },
-    {
-      name: 'WHO-GMP',
-      description: 'Good Manufacturing Practice',
+      name: 'WHO-GMP Certification',
+      description: 'Good Manufacturing Practice compliance',
       issuer: 'World Health Organization',
     },
     {
-      name: 'FDA Registration',
-      description: 'US Food & Drug Administration',
-      issuer: 'US FDA',
+      name: 'ISO 9001:2015',
+      description: 'Quality Management System Certification',
+      issuer: 'International Organization for Standardization',
     },
     {
-      name: 'CE Marking',
-      description: 'European Conformity',
-      issuer: 'European Union',
+      name: 'Export Certification',
+      description: 'Authorized exporter of pharmaceutical products',
+      issuer: 'Government of India',
+    },
+    {
+      name: 'Central Asia Regulatory Approval',
+      description: 'Compliant with Central Asian market standards',
+      issuer: 'Regional Health Authorities',
     },
   ];
 
@@ -99,17 +80,19 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                About PharmaCorp
+                About Aneni Remedies
               </Badge>
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Leading Global Healthcare 
-                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Innovation</span>
+                  Committed to Global 
+                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Pharmaceutical Excellence</span>
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  With over two decades of excellence in pharmaceutical manufacturing and distribution, 
-                  PharmaCorp has established itself as a trusted partner in global healthcare, delivering 
-                  life-changing medicines across continents.
+                  Aneni Remedies is a fast-growing pharmaceutical company in India, dedicated to the
+                  manufacturing and export of a wide range of high-quality, affordable, and reliable 
+                  pharmaceutical products. Founded by highly experienced and committed medical professionals,
+                  the company combines deep expertise in medicine, marketing, exports, and customer relationship management
+                  to deliver trusted healthcare solutions across Central Asia and beyond.
                 </p>
               </div>
             </div>
@@ -117,7 +100,7 @@ const About = () => {
               <div className="relative overflow-hidden rounded-2xl shadow-elegant">
                 <img
                   src={researchLab}
-                  alt="PharmaCorp Research Laboratory"
+                  alt="Aneni Remedies Research Laboratory"
                   className="w-full h-auto transform hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
@@ -143,7 +126,9 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  To improve global health outcomes by providing high-quality, accessible pharmaceutical products and services while maintaining the highest standards of safety, efficacy, and regulatory compliance.
+                  To provide cost-effective, innovation-driven, and superior quality pharmaceutical 
+                  products across the globe — committed to improving and enhancing the quality of life 
+                  through trust, excellence, and continuous care.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -160,7 +145,9 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  To be the most trusted pharmaceutical partner globally, recognized for innovation, quality excellence, and our contribution to advancing healthcare accessibility in emerging markets.
+                  To be a global pharmaceutical company admired for its affordability, accessibility, 
+                  and quality of products — setting new benchmarks in ethical business practices and 
+                  global healthcare standards.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -177,42 +164,12 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base leading-relaxed">
-                  Integrity, Quality Excellence, Patient Safety, Innovation, Regulatory Compliance, Sustainability, and Collaborative Partnership guide every decision we make.
+                  Ethics, quality, reliability, and consumer satisfaction form the foundation of everything 
+                  we do. We believe in innovation with integrity and in building long-term relationships 
+                  grounded in trust and transparency.
                 </CardDescription>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Company History */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Journey of Excellence
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Two decades of continuous growth, innovation, and expansion across global markets.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="flex items-start space-x-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-                      {milestone.year.slice(-2)}
-                    </div>
-                  </div>
-                  <div className="pt-1">
-                    <div className="text-lg font-semibold text-foreground mb-2">{milestone.year}</div>
-                    <p className="text-muted-foreground">{milestone.event}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -225,7 +182,8 @@ const About = () => {
               Leadership Team
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experienced leaders with decades of combined expertise in pharmaceuticals, operations, and global healthcare.
+              Guided by a team of visionary medical professionals with deep expertise in 
+              pharmaceuticals, exports, and healthcare innovation.
             </p>
           </div>
 
@@ -272,7 +230,8 @@ const About = () => {
               Certifications & Quality Standards
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our commitment to quality is validated by international certifications and regulatory approvals.
+              Our facilities and processes adhere to globally recognized quality and regulatory standards, 
+              ensuring consistent excellence in every product.
             </p>
           </div>
 
@@ -298,14 +257,6 @@ const About = () => {
               </Card>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Button variant="hero" size="lg" asChild className="group shadow-glow">
-              <Link to="/downloads">
-                Download Certificates <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -317,7 +268,8 @@ const About = () => {
               Global Presence
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Serving healthcare providers across three continents with reliable supply chains and local partnerships.
+              Delivering quality medicines to healthcare providers across Central Asia and other 
+              international markets through strong distribution networks and ethical partnerships.
             </p>
           </div>
 
@@ -327,11 +279,13 @@ const About = () => {
                 <div className="flex justify-center mb-4">
                   <Globe2 className="h-12 w-12 text-primary" />
                 </div>
-                <CardTitle className="text-xl">Africa</CardTitle>
+                <CardTitle className="text-xl">Central Asia</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  Established distribution networks across 15 African countries with local regulatory compliance and supply chain infrastructure.
+                  Aneni Remedies has a strong presence across Central Asian countries, providing 
+                  high-quality, affordable medicines through reliable partnerships and efficient 
+                  supply chain systems.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -341,11 +295,12 @@ const About = () => {
                 <div className="flex justify-center mb-4">
                   <TrendingUp className="h-12 w-12 text-primary" />
                 </div>
-                <CardTitle className="text-xl">ASEAN</CardTitle>
+                <CardTitle className="text-xl">Expanding Markets</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  Strategic partnerships in Southeast Asian markets with focus on emerging economies and healthcare accessibility.
+                  With a growing global footprint, we continue expanding into emerging healthcare 
+                  markets, ensuring affordable access to trusted pharmaceutical solutions.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -355,11 +310,12 @@ const About = () => {
                 <div className="flex justify-center mb-4">
                   <Shield className="h-12 w-12 text-primary" />
                 </div>
-                <CardTitle className="text-xl">Americas</CardTitle>
+                <CardTitle className="text-xl">Global Standards</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  FDA-registered operations serving North and South American markets with full regulatory compliance and quality assurance.
+                  Every product from Aneni Remedies meets strict international regulatory standards,
+                  reflecting our commitment to safety, reliability, and ethical excellence worldwide.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -371,13 +327,14 @@ const About = () => {
       <section className="py-20 bg-gradient-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Learn More?
+            Partner With Us for a Healthier Tomorrow
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Discover how our experience and commitment to quality can support your pharmaceutical needs.
+            Discover how Aneni Remedies can bring reliable, affordable, and high-quality 
+            pharmaceutical products to your market.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" asChild>
+            <Button variant="cta" size="lg" asChild>
               <Link to="/contact">
                 Contact Our Team <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
