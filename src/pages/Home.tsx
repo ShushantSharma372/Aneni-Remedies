@@ -245,7 +245,7 @@ const Home = () => {
               Join hundreds of healthcare partners worldwide. Let's discuss how we can support your pharmaceutical needs with our cutting-edge solutions and global expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="secondary" size="xl" asChild className="group shadow-glow hover:shadow-elegant transition-all duration-300">
+              <Button variant="cta" size="xl" asChild className="group shadow-glow hover:shadow-elegant transition-all duration-300">
                 <Link to="/contact">
                   Get in Touch <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
