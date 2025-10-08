@@ -122,16 +122,18 @@ const Home = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-subtle">
-        <div className="container mx-auto px-4 py-20">
-          <HeroCarousel slides={heroSlides} />
-          
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16">
+      <section className="relative w-full overflow-hidden">
+        <HeroCarousel slides={heroSlides} />
+      </section>
+
+      {/* Stats Section (separate below hero) */}
+      <section className="relative bg-gradient-subtle py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
                 <div className="flex justify-center mb-4">
-                  <div className="p-4 bg-gradient-glass backdrop-blur-sm rounded-2xl shadow-glass group-hover:shadow-glow transition-all duration-500">
+                <div className="p-4 bg-white rounded-2xl shadow-glass group-hover:shadow-glow transition-all duration-500">
                     <stat.icon className={`h-8 w-8 ${stat.color} group-hover:scale-110 transition-transform`} />
                   </div>
                 </div>
