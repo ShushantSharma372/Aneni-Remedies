@@ -33,18 +33,18 @@ const Home = () => {
     {
       title: 'Advancing Healthcare',
       subtitle: 'Globally',
-      description: 'Leading pharmaceutical company delivering quality healthcare solutions across Africa, ASEAN, and the Americas with over 20 years of excellence.',
-      badge: 'Global Excellence in Pharmaceuticals',
+      description: 'Aneni Remedies is a fast-growing pharmaceutical company delivering high-quality healthcare solutions across Central Asia and international markets, backed by years of expertise and ethical practices.',
+      badge: 'Excellence in Pharmaceuticals',
       primaryAction: { text: 'Partner With Us', link: '/contact' },
       secondaryAction: { text: 'Download Brochure', link: '/downloads' },
       image: heroImage,
-      imageAlt: 'PharmaCorp Laboratory Facility'
+      imageAlt: 'Aneni Remedies Laboratory Facility'
     },
     {
       title: 'Research &',
       subtitle: 'Innovation',
-      description: 'State-of-the-art research facilities with cutting-edge technology, developing breakthrough pharmaceutical solutions for global healthcare challenges.',
-      badge: 'Innovation Leader',
+      description: 'Our state-of-the-art research facilities and experienced scientists drive innovative pharmaceutical solutions to meet global healthcare challenges.',
+      badge: 'Innovation in Pharmaceuticals',
       primaryAction: { text: 'Explore R&D', link: '/about' },
       secondaryAction: { text: 'View Research', link: '/products' },
       image: researchLab,
@@ -53,7 +53,7 @@ const Home = () => {
     {
       title: 'Quality',
       subtitle: 'Manufacturing',
-      description: 'GMP-certified manufacturing facilities ensuring the highest quality standards with advanced production lines and rigorous quality control processes.',
+      description: 'GMP-certified manufacturing facilities ensure the highest quality standards, advanced production lines, and rigorous quality control for reliable healthcare solutions.',
       badge: 'GMP Certified Excellence',
       primaryAction: { text: 'Quality Standards', link: '/about' },
       secondaryAction: { text: 'Our Products', link: '/products' },
@@ -61,61 +61,62 @@ const Home = () => {
       imageAlt: 'Manufacturing Facility'
     }
   ];
+  
 
   const stats = [
-    { icon: Globe2, label: 'Countries Served', value: '25+', color: 'text-blue-500' },
-    { icon: Building2, label: 'Years of Excellence', value: '20+', color: 'text-green-500' },
-    { icon: Users, label: 'Healthcare Partners', value: '500+', color: 'text-purple-500' },
-    { icon: Award, label: 'Certifications', value: '15+', color: 'text-orange-500' }
+    { icon: Globe2, label: 'Countries Served', value: '15+', color: 'text-blue-500' },
+    { icon: Building2, label: 'Years of Excellence', value: '10+', color: 'text-green-500' },
+    { icon: Users, label: 'Healthcare Partners', value: '200+', color: 'text-purple-500' },
+    { icon: Award, label: 'Certifications', value: '10+', color: 'text-orange-500' }
   ];
-
+  
   const features = [
     {
       icon: FlaskConical,
       title: 'Advanced R&D',
-      description: 'State-of-the-art research facilities with cutting-edge technology and expert scientists developing innovative pharmaceutical solutions.',
+      description: 'Cutting-edge research facilities and expert scientists focused on developing innovative pharmaceutical solutions for both local and international markets.',
       image: researchLab,
     },
     {
       icon: Shield,
       title: 'Quality Assurance',
-      description: 'ISO 9001:2015 and GMP certified manufacturing processes ensuring highest quality standards with rigorous testing protocols.',
+      description: 'ISO 9001:2015 and WHO-GMP certified manufacturing processes ensuring the highest quality standards and safety compliance.',
       image: qualityControl,
     },
     {
       icon: Globe2,
       title: 'Global Reach',
-      description: 'Established presence in Africa, ASEAN, and Americas with reliable distribution networks and strategic partnerships.',
+      description: 'Strong presence across Central Asia with expanding distribution networks and international partnerships to deliver healthcare products reliably.',
       image: globalNetwork,
     },
   ];
 
   const testimonials = [
-    {
-      name: 'Dr. Sarah Johnson',
-      title: 'Chief Medical Officer, HealthCare Plus',
-      content: 'PharmaCorp has been our trusted partner for over 5 years. Their quality standards and reliability are unmatched in the industry.',
-      rating: 5,
-    },
-    {
-      name: 'Michael Chen',
-      title: 'Procurement Director, MediSupply Co.',
-      content: 'The partnership with PharmaCorp has significantly improved our supply chain efficiency. Outstanding service and product quality.',
-      rating: 5,
-    },
-    {
-      name: 'Dr. Priya Patel',
-      title: 'Research Director, Global Health Initiative',
-      content: 'Their research capabilities and innovative approach to pharmaceutical development have exceeded our expectations consistently.',
-      rating: 5,
-    },
-    {
-      name: 'James Wilson',
-      title: 'CEO, MedDistribute Africa',
-      content: 'PharmaCorp understands the African market like no other. Their products and distribution network are world-class.',
-      rating: 5,
-    },
-  ];
+  {
+    name: 'Dr. Sarah Kumar',
+    title: 'Chief Medical Officer, Central Health Network',
+    content: 'Aneni Remedies has been a trusted partner in Central Asia for years. Their commitment to quality and reliability is unmatched.',
+    rating: 5,
+  },
+  {
+    name: 'Michael Rahman',
+    title: 'Procurement Director, MediSupply Central',
+    content: 'Partnering with Aneni Remedies has significantly improved our supply chain efficiency. Outstanding product quality and service.',
+    rating: 5,
+  },
+  {
+    name: 'Dr. Priya Sharma',
+    title: 'Research Director, Global Pharma Initiative',
+    content: 'Their research capabilities and innovative approach to pharmaceutical development consistently exceed expectations.',
+    rating: 5,
+  },
+  {
+    name: 'James Liu',
+    title: 'CEO, HealthDistribute Asia',
+    content: 'Aneni Remedies understands the Central Asian market thoroughly. Their products and distribution network are world-class.',
+    rating: 5,
+  },
+];
 
   return (
     <div className="min-h-screen bg-background">
