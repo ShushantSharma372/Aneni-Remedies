@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import researchLab from '@/assets/research-lab.jpg';
 import qualityControl from '@/assets/quality-control.jpg';
 import manufacturing from '@/assets/manufacturing.jpg';
+import sample4 from '@/assets/sample5.jpg';
 
 const QualityRD = () => {
   const highlights = [
@@ -44,14 +45,19 @@ const QualityRD = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative bg-gradient-subtle py-20">
+      <section
+  className="relative bg-gradient-subtle py-20 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: `url(${sample4})`,
+  }}
+>
         <div className="container mx-auto px-4 text-center max-w-3xl">
         <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   Quality and Research
                   <span className="bg-gradient-hero bg-clip-text text-transparent"> Excellence</span>
               </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <p className="text-xl text-foreground leading-relaxed">
                 At PharmaCorp, quality and research form the backbone of everything we do. <br></br>
                 From innovative formulations to world-class quality standards, <br></br>
                 we are committed to advancing healthcare globally.
