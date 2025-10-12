@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import researchLab from '@/assets/research-lab.jpg';
+import sample from '@/assets/sample.jpg';
+import back1 from '@/assets/sample4.jpg';
 import { 
   Award, 
   Globe2, 
@@ -74,10 +76,15 @@ const About = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-subtle overflow-hidden">
+      <section
+          className="relative py-24 bg-cover bg-center bg-no-repeat overflow-hidden"
+          style={{
+            backgroundImage: `url(${sample})`,
+          }}
+        >
         <div className="absolute inset-0 bg-gradient-glass"></div>
-        <div className="relative container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative container mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-8">
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
                 About Aneni Remedies
@@ -88,22 +95,11 @@ const About = () => {
                   <span className="bg-gradient-hero bg-clip-text text-transparent"> Pharmaceutical Excellence</span>
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  Aneni Remedies is a fast-growing pharmaceutical company in India, dedicated to the
-                  manufacturing and export of a wide range of high-quality, affordable, and reliable 
-                  pharmaceutical products. Founded by highly experienced and committed medical professionals,
-                  the company combines deep expertise in medicine, marketing, exports, and customer relationship management
-                  to deliver trusted healthcare solutions across Central Asia and beyond.
+                  Aneni Remedies is a fast-growing pharmaceutical company in India, dedicated to the manufacturing and export 
+                  of a wide range of high-quality, affordable, and reliable pharmaceutical products. Founded by highly experienced 
+                  and committed medical professionals, the company combines deep expertise in medicine, marketing, exports, 
+                  and customer relationship management to deliver trusted healthcare solutions across Central Asia and beyond.
                 </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-elegant">
-                <img
-                  src={researchLab}
-                  alt="Aneni Remedies Research Laboratory"
-                  className="w-full h-auto transform hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
               </div>
             </div>
           </div>
@@ -111,7 +107,12 @@ const About = () => {
       </section>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20 bg-background">
+      <section
+  className="py-20 bg-background bg-cover bg-center bg-no-repeat relative"
+  style={{
+    backgroundImage: `url(${back1})`,
+  }}
+>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
