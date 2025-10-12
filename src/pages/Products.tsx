@@ -16,6 +16,7 @@ import medo from '@/assets/medospan.png';
 import vecko from '@/assets/veckolin.jpeg';
 import levo from '@/assets/levo.jpeg';
 import kalra from '@/assets/kalra.png';
+import sample2 from '@/assets/sample2.jpg';
 
 import { 
   Search, 
@@ -209,7 +210,12 @@ const Products = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-subtle overflow-hidden">
+      <section
+          className="relative py-28 bg-cover bg-center bg-no-repeat overflow-hidden"
+          style={{
+            backgroundImage: `url(${sample2})`,
+          }}
+        >
         <div className="absolute inset-0 bg-gradient-glass"></div>
         <div className="relative container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -226,16 +232,6 @@ const Products = () => {
                   Discover our comprehensive range of high-quality pharmaceutical products, 
                   manufactured to the highest international standards with cutting-edge technology and rigorous quality control.
                 </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-elegant">
-                <img
-                  src={manufacturing}
-                  alt="PharmaCorp Manufacturing Facility"
-                  className="w-full h-auto transform hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
               </div>
             </div>
           </div>
