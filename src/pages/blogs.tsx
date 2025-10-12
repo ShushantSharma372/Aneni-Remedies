@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowLeft } from 'lucide-react';
 import { blogs, Blog } from '@/blogsContent';
-
+import sample3 from '@/assets/sample3.jpg';
 const Blogs = () => {
   const [activeBlog, setActiveBlog] = useState<Blog | null>(null);
   const [scrollPosition, setScrollPosition] = useState(0); // 👈 new state
@@ -39,7 +39,12 @@ const Blogs = () => {
 
       {/* Hero section hidden in article view */}
       {!activeBlog && (
-        <section className="py-20 bg-gradient-subtle text-center">
+        <section
+         className="relative flex items-center justify-center text-center py-20 bg-cover bg-center bg-no-repeat overflow-hidden min-h-[40vh]"
+        style={{
+          backgroundImage: `url(${sample3})`,
+        }}
+      >
           <div className="container mx-auto px-4 space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               A N E N I <span className="bg-gradient-hero bg-clip-text text-transparent">Insights</span>
