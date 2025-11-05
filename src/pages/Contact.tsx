@@ -55,7 +55,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Address',
-      details: ['123 Pharma Boulevard', 'Healthcare District, HC 12345', 'United States'],
+      details:  ['Aneni Remedies','Shop No. 209, Vikas Sudarshan Plaza,', 'Plot No. 4, Sector 5, Dwarka', 'New Delhi-110075 India'],
     },
     {
       icon: Clock,
