@@ -97,9 +97,10 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-muted-foreground mt-1 flex-shrink-0" />
                 <div className="text-sm text-muted-foreground">
-                  <p>123 Pharma Boulevard</p>
-                  <p>Healthcare District, HC 12345</p>
-                  <p>United States</p>
+                  <p>Aneni Remidies</p>
+                  <p>Shop No. 209, Vikas Sudarshan Plaza,</p>
+                  <p>Plot No. 4, Sector 5, Dwarka</p>
+                  <p>New Delhi-110075 India</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
