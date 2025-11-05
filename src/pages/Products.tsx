@@ -109,17 +109,6 @@ const Products = () => {
       image: enimet,
     },
     {
-      id: 3,
-      name: 'KRIEON - N',
-      salt: 'Pancreatin (Digestive Enzyme)',
-      power: '10000 IU',
-      type: 'Capsule',
-      description: 'Digestive enzyme supplement supporting pancreatic insufficiency.',
-      status: 'Available',
-      icon: Pill,
-      image: krieon,
-    },
-    {
       id: 4,
       name: 'GERMIL M1',
       salt: 'Glimepiride + Metformin Hydrochloride (Hypoglycemic agent)',
