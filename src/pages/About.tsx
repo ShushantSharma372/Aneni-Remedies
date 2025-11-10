@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import researchLab from '@/assets/research-lab.jpg';
 import sample from '@/assets/sample.jpg';
 import back1 from '@/assets/sample4.jpg';
+import map from '@/assets/map.png';
 import { 
   Award, 
   Globe2, 
@@ -174,6 +175,26 @@ const About = () => {
           </div>
         </div>
       </section>
+
+            {/* Global Presence Section */}
+      <section className="py-20 bg-gradient-subtle">
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+      Our Presence in Central Asia
+    </h2>
+    <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+      Aneni Remedies has a strong presence across region — connecting healthcare solutions from Russia to Central Asia.
+    </p>
+
+    <div className="flex justify-center">
+      <img
+        src={map}
+        alt="CIS & Central Asia Map"
+        className="rounded-2xl shadow-lg transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
+      />
+    </div>
+  </div>
+</section>
 
       {/* Leadership Team */}
       <section className="py-20 bg-background">
