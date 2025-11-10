@@ -376,7 +376,7 @@ const Products = () => {
             </CardDescription>
 
             <div className="space-y-2 p-4 bg-gradient-glass rounded-lg">
-              <div className="text-sm text-muted-foreground"><strong>Salt:</strong> </div>
+              <div className="text-sm text-muted-foreground"> </div>
               {product.power && <div className="text-sm text-muted-foreground"><strong>Power:</strong> {product.power}</div>}
               <div className="text-sm text-muted-foreground"><strong>Type:</strong> {product.type}</div>
             </div>
