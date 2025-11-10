@@ -7,15 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/ui/footer';
-import medilan from '@/assets/medilan.png';
-import dapalozin from '@/assets/dapalozin.jpeg';
-import germil from '@/assets/germil.png';
-import krieon from '@/assets/krieon.png';
-import enimet from '@/assets/enimet.png';
-import medo from '@/assets/medospan.png';
-import vecko from '@/assets/veckolin.jpeg';
-import levo from '@/assets/levo.jpeg';
-import kalra from '@/assets/kalra.png';
+import capsule from '@/assets/capsule.png';
+import injection from '@/assets/injection.png';
+import tablet from '@/assets/tablet.png';
+import softgel from '@/assets/softgel.png';
 import sample2 from '@/assets/sample2.jpg';
 
 import { 
@@ -39,6 +34,7 @@ import {
   Zap
 } from 'lucide-react';
 import manufacturing from '@/assets/manufacturing.jpg';
+import { table } from 'console';
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -95,7 +91,7 @@ const Products = () => {
       description: 'Nimesulide tablet for pain relief and anti-inflammatory use.',
       status: 'Available',
       icon: Tablets,
-      image: medilan,
+      image: tablet,
     },
     {
       id: 2,
@@ -106,7 +102,7 @@ const Products = () => {
       description: 'Oral hypoglycemic agent for managing type 2 diabetes.',
       status: 'Available',
       icon: Tablets,
-      image: enimet,
+      image: tablet,
     },
     {
       id: 4,
@@ -117,7 +113,7 @@ const Products = () => {
       description: 'Combination therapy for type 2 diabetes mellitus.',
       status: 'Available',
       icon: Tablets,
-      image: germil,
+      image: tablet,
     },
     {
       id: 5,
@@ -128,7 +124,7 @@ const Products = () => {
       description: 'Corticosteroid injection used for inflammation and allergy management.',
       status: 'Available',
       icon: Syringe,
-      image: medo,
+      image: injection,
     },
     {
       id: 6,
@@ -138,7 +134,7 @@ const Products = () => {
       description: 'Antibacterial, antifungal, and antiprotozoal combination capsule.',
       status: 'Available',
       icon: Pill,
-      image: vecko,
+      image: softgel,
     },
     {
       id: 7,
@@ -149,7 +145,7 @@ const Products = () => {
       description: 'SGLT2 inhibitor for type 2 diabetes management.',
       status: 'Available',
       icon: Tablets,
-      image: dapalozin,
+      image: tablet,
     },
     {
       id: 8,
@@ -159,8 +155,8 @@ const Products = () => {
       type: 'Injection',
       description: 'Nutritional supplement supporting fat metabolism and energy.',
       status: 'Available',
-      icon: Tablets,
-      image: levo,
+      icon: Syringe,
+      image: injection,
     },
     {
       id: 9,
@@ -171,7 +167,7 @@ const Products = () => {
       description: 'Vitamin D3 supplement for bone health and calcium absorption.',
       status: 'Available',
       icon: Pill,
-      image: kalra,
+      image: capsule,
     },
   ];
   
@@ -370,7 +366,7 @@ const Products = () => {
 
           <CardHeader>
             <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-              {product.name}
+              {/* {product.name} */}
             </CardTitle>
           </CardHeader>
 
