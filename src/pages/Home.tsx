@@ -34,12 +34,12 @@ import {
 const Home = () => {
   const heroSlides = [
     {
-      title: 'Advancing Healthcare',
-      subtitle: 'Globally',
+      title: 'ANENI',
+      subtitle: 'REMEDIES',
       description: 'Aneni Remedies is a fast-growing pharmaceutical company delivering high-quality healthcare solutions across Central Asia and international markets, backed by years of expertise and ethical practices.',
       badge: 'Excellence in Pharmaceuticals',
       primaryAction: { text: 'Partner With Us', link: '/contact' },
-      secondaryAction: { text: 'Download Brochure', link: '/downloads' },
+      secondaryAction: { text: 'Products Catalog', link: '/products' },
       image: heroImage,
       imageAlt: 'Aneni Remedies Laboratory Facility'
     },
@@ -48,8 +48,8 @@ const Home = () => {
       subtitle: 'Innovation',
       description: 'Our state-of-the-art research facilities and experienced scientists drive innovative pharmaceutical solutions to meet global healthcare challenges.',
       badge: 'Innovation in Pharmaceuticals',
-      primaryAction: { text: 'Explore R&D', link: '/about' },
-      secondaryAction: { text: 'View Research', link: '/products' },
+      primaryAction: { text: 'Explore R&D', link: '/quality' },
+      secondaryAction: { text: 'View Blogs', link: '/blogs' },
       image: researchLab,
       imageAlt: 'Advanced Research Laboratory'
     },
