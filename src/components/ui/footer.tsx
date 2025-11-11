@@ -32,7 +32,7 @@ const Footer = () => {
             </Link>
             </div>
             <p className="text-sm text-muted-foreground">
-              Leading pharmaceutical company delivering quality healthcare solutions across Africa, ASEAN, and the Americas with over 20 years of excellence.
+            Aneni Remedies is a fast-growing pharmaceutical company delivering high-quality healthcare solutions across Central Asia and international markets, backed by years of expertise and ethical practices.
             </p>
             <div className="flex space-x-4">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -54,8 +54,8 @@ const Footer = () => {
                 { name: 'About Us', path: '/about' },
                 { name: 'Products', path: '/products' },
                 { name: 'Quality & R&D', path: '/quality' },
-                { name: 'Careers', path: '/careers' },
-                { name: 'Downloads', path: '/downloads' },
+                { name: 'Blogs', path: '/blogs' },
+                { name: 'Contact', path: '/contact' },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -79,15 +79,6 @@ const Footer = () => {
               <li>Regulatory Support</li>
               <li>Distribution Partnership</li>
             </ul>
-            <div className="pt-2">
-              <Link
-                to="/downloads"
-                className="inline-flex items-center space-x-2 text-sm text-primary hover:text-pharma-green transition-colors"
-              >
-                <Download className="h-4 w-4" />
-                <span>Company Brochure</span>
-              </Link>
-            </div>
           </div>
 
           {/* Contact Info */}
@@ -98,18 +89,18 @@ const Footer = () => {
                 <MapPin className="h-4 w-4 text-muted-foreground mt-1 flex-shrink-0" />
                 <div className="text-sm text-muted-foreground">
                   <p>Aneni Remidies</p>
-                  <p>Shop No. 209, Vikas Sudarshan Plaza,</p>
+                  <p>SN. 209, Vikas Sudarshan Plaza,</p>
                   <p>Plot No. 4, Sector 5, Dwarka</p>
                   <p>New Delhi-110075 India</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-sm text-muted-foreground">+91 9350822880</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">info@pharmacorp.com</span>
+                <span className="text-sm text-muted-foreground">aneniremedies@gmail.com</span>
               </div>
             </div>
           </div>
@@ -119,17 +110,17 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-muted-foreground">
-            <span>© 2024 PharmaCorp. All rights reserved.</span>
+            <span>© 2024 Aneni. All rights reserved.</span>
             <div className="flex items-center space-x-4">
-              <Link to="/privacy" className="hover:text-primary transition-colors">
+              <span>
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">
+              </span>
+              <span>
                 Terms & Conditions
-              </Link>
-              <Link to="/regulatory" className="hover:text-primary transition-colors">
+              </span>
+              <span>
                 Regulatory Information
-              </Link>
+              </span>
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
