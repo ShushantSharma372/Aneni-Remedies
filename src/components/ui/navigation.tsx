@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import name from '@/assets/name.png';
-
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const location = useLocation();
@@ -17,6 +16,8 @@ const Navigation = () => {
     { name: 'Products', path: '/products' },
     { name: 'Quality & R&D', path: '/quality' },
     { name: 'Blogs', path: '/blogs' },
+    // { name: 'Careers', path: '/careers' },
+    // { name: 'Downloads', path: '/downloads' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -28,11 +29,11 @@ const Navigation = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>+91 9350822880</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>info@pharmacorp.com</span>
+              <span>aneniremedies@gmail.com</span>
             </div>
           </div>
           
