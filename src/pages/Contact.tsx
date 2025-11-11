@@ -45,17 +45,17 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 123-4568 (International)'],
+      details: ['+91 9350822880'],
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@pharmacorp.com', 'partnerships@pharmacorp.com'],
+      details: ['aneniremedies@gmail.com'],
     },
     {
       icon: MapPin,
       title: 'Address',
-      details:  ['Aneni Remedies','Shop No. 209, Vikas Sudarshan Plaza,', 'Plot No. 4, Sector 5, Dwarka', 'New Delhi-110075 India'],
+      details: ['Aneni Remedies','SN. 209, Vikas Sudarshan Plaza,', 'Plot No. 4, Sector 5, Dwarka', 'New Delhi-110075 India',''],
     },
     {
       icon: Clock,
