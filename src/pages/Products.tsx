@@ -376,7 +376,7 @@ const Products = () => {
             </CardDescription>
 
             <div className="space-y-2 p-4 bg-gradient-glass rounded-lg">
-              <div className="text-sm text-muted-foreground"> </div>
+              <div className="text-sm text-muted-foreground"><strong>Salt:</strong> {product.salt}</div>
               {product.power && <div className="text-sm text-muted-foreground"><strong>Power:</strong> {product.power}</div>}
               <div className="text-sm text-muted-foreground"><strong>Type:</strong> {product.type}</div>
             </div>
@@ -479,15 +479,15 @@ const Products = () => {
             Our team of experts can develop customized pharmaceutical solutions tailored to your specific requirements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" asChild>
+            <Button variant="cta" size="lg" asChild>
               <Link to="/contact">
                 Discuss Requirements <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
-              <Link to="/downloads">
+              <Link to="/blogs">
                 <Download className="mr-2 h-5 w-5" />
-                Product Catalog
+                Read Blogs
               </Link>
             </Button>
           </div>
