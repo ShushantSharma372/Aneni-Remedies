@@ -21,74 +21,78 @@ import {
   FileUp,
   Globe2
 } from 'lucide-react';
-import { openPositions } from '@/pages/careers';
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent, formType: string) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, formType: string) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent Successfully",
-        description: `Your ${formType} has been received. We'll get back to you within 24 hours.`,
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xyzolrjn', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent Successfully",
+          description: `Your ${formType} has been received. We'll get back to you within 24 hours.`,
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: "There was a problem sending your message. Please try again.",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Phone',
-      details: ['+91 9350822880'],
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: ['aneniremedies@gmail.com'],
-    },
-    {
-      icon: MapPin,
-      title: 'Address',
-      details: ['Aneni Remedies','SN. 209, Vikas Sudarshan Plaza,', 'Plot No. 4, Sector 5, Dwarka', 'New Delhi-110075 India',''],
-    },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM', 'Sunday: Closed'],
-    },
+    { icon: Phone, title: 'Phone', details: ['+91 9350822880'] },
+    { icon: Mail, title: 'Email', details: ['aneniremedies@gmail.com'] },
+    { icon: MapPin, title: 'Address', details: ['Aneni Remedies','SN. 209, Vikas Sudarshan Plaza,', 'Plot No. 4, Sector 5, Dwarka', 'New Delhi-110075 India',''] },
+    { icon: Clock, title: 'Business Hours', details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM', 'Sunday: Closed'] },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section
-  className="py-20 bg-gradient-subtle bg-cover bg-center bg-no-repeat relative"
-  style={{
-    backgroundImage: `url(${sample6})`,
-  }}
->
+        className="py-20 bg-gradient-subtle bg-cover bg-center bg-no-repeat relative"
+        style={{ backgroundImage: `url(${sample6})` }}
+      >
         <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-        <div className="space-y-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Get in
-                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Touch</span>
+                Get in
+                <span className="bg-gradient-hero bg-clip-text text-transparent"> Touch</span>
               </h1>
-                <p className="text-xl text-foreground leading-relaxed">
-                Ready to partner with us?  <br></br>
-                Whether you're looking for pharmaceutical supplies, distribution opportunities, <br></br>
+              <p className="text-xl text-foreground leading-relaxed">
+                Ready to partner with us?  <br/>
+                Whether you're looking for pharmaceutical supplies, distribution opportunities, <br/>
                 or career positions, we're here to help.
-
-                </p>
-          </div>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -110,9 +114,7 @@ const Contact = () => {
                 <CardContent>
                   <div className="space-y-1">
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-sm text-muted-foreground">
-                        {detail}
-                      </p>
+                      <p key={idx} className="text-sm text-muted-foreground">{detail}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -137,69 +139,51 @@ const Contact = () => {
 
             <Tabs defaultValue="general" className="w-full">
               <TabsList className="grid w-full grid-cols-1 md:grid-cols-4 mb-8">
-                <TabsTrigger value="general" className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4" />
-                  <span>General Inquiry</span>
-                </TabsTrigger>
-                <TabsTrigger value="partnership" className="flex items-center space-x-2">
-                  <Building2 className="h-4 w-4" />
-                  <span>Partnership</span>
-                </TabsTrigger>
-                <TabsTrigger value="distributor" className="flex items-center space-x-2">
-                  <Globe2 className="h-4 w-4" />
-                  <span>Distributor</span>
-                </TabsTrigger>
-                <TabsTrigger value="career" className="flex items-center space-x-2">
-                  <Users className="h-4 w-4" />
-                  <span>Career</span>
-                </TabsTrigger>
+                <TabsTrigger value="general" className="flex items-center space-x-2"><Mail className="h-4 w-4" /><span>General Inquiry</span></TabsTrigger>
+                <TabsTrigger value="partnership" className="flex items-center space-x-2"><Building2 className="h-4 w-4" /><span>Partnership</span></TabsTrigger>
+                <TabsTrigger value="distributor" className="flex items-center space-x-2"><Globe2 className="h-4 w-4" /><span>Distributor</span></TabsTrigger>
+                <TabsTrigger value="career" className="flex items-center space-x-2"><Users className="h-4 w-4" /><span>Career</span></TabsTrigger>
               </TabsList>
 
               {/* General Inquiry Form */}
               <TabsContent value="general">
                 <Card className="border-0 shadow-pharma-card">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Mail className="h-5 w-5" />
-                      <span>General Inquiry</span>
-                    </CardTitle>
-                    <CardDescription>
-                      Send us a general message about our products or services.
-                    </CardDescription>
+                    <CardTitle className="flex items-center space-x-2"><Mail className="h-5 w-5" /><span>General Inquiry</span></CardTitle>
+                    <CardDescription>Send us a general message about our products or services.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={(e) => handleSubmit(e, 'general inquiry')} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="general-name">Full Name *</Label>
-                          <Input id="general-name" required />
+                          <Input id="general-name" name="name" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="general-email">Email Address *</Label>
-                          <Input id="general-email" type="email" required />
+                          <Input id="general-email" name="email" type="email" required />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="general-company">Company</Label>
-                          <Input id="general-company" />
+                          <Input id="general-company" name="company" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="general-country">Country</Label>
-                          <Input id="general-country" />
+                          <Input id="general-country" name="country" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="general-subject">Subject *</Label>
-                        <Input id="general-subject" required />
+                        <Input id="general-subject" name="subject" required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="general-message">Message *</Label>
-                        <Textarea id="general-message" rows={5} required />
+                        <Textarea id="general-message" name="message" rows={5} required />
                       </div>
                       <Button type="submit" disabled={isSubmitting} className="w-full">
-                        <Send className="mr-2 h-4 w-4" />
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        <Send className="mr-2 h-4 w-4" />{isSubmitting ? 'Sending...' : 'Send Message'}
                       </Button>
                     </form>
                   </CardContent>
@@ -210,39 +194,34 @@ const Contact = () => {
               <TabsContent value="partnership">
                 <Card className="border-0 shadow-pharma-card">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Building2 className="h-5 w-5" />
-                      <span>Partnership Request</span>
-                    </CardTitle>
-                    <CardDescription>
-                      Explore business partnership opportunities with PharmaCorp.
-                    </CardDescription>
+                    <CardTitle className="flex items-center space-x-2"><Building2 className="h-5 w-5" /><span>Partnership Request</span></CardTitle>
+                    <CardDescription>Explore business partnership opportunities with PharmaCorp.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={(e) => handleSubmit(e, 'partnership request')} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="partner-name">Full Name *</Label>
-                          <Input id="partner-name" required />
+                          <Input id="partner-name" name="name" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="partner-email">Email Address *</Label>
-                          <Input id="partner-email" type="email" required />
+                          <Input id="partner-email" name="email" type="email" required />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="partner-company">Company Name *</Label>
-                          <Input id="partner-company" required />
+                          <Input id="partner-company" name="company" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="partner-position">Position/Title</Label>
-                          <Input id="partner-position" />
+                          <Input id="partner-position" name="position" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="partnership-type">Partnership Type *</Label>
-                        <Select>
+                        <Select name="partnershipType">
                           <SelectTrigger>
                             <SelectValue placeholder="Select partnership type" />
                           </SelectTrigger>
@@ -257,11 +236,10 @@ const Contact = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="partner-requirements">Partnership Requirements *</Label>
-                        <Textarea id="partner-requirements" rows={5} required />
+                        <Textarea id="partner-requirements" name="requirements" rows={5} required />
                       </div>
                       <Button type="submit" disabled={isSubmitting} className="w-full">
-                        <Send className="mr-2 h-4 w-4" />
-                        {isSubmitting ? 'Submitting...' : 'Submit Partnership Request'}
+                        <Send className="mr-2 h-4 w-4" />{isSubmitting ? 'Submitting...' : 'Submit Partnership Request'}
                       </Button>
                     </form>
                   </CardContent>
@@ -272,39 +250,34 @@ const Contact = () => {
               <TabsContent value="distributor">
                 <Card className="border-0 shadow-pharma-card">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Globe2 className="h-5 w-5" />
-                      <span>Distributor Application</span>
-                    </CardTitle>
-                    <CardDescription>
-                      Apply to become an authorized distributor in your region.
-                    </CardDescription>
+                    <CardTitle className="flex items-center space-x-2"><Globe2 className="h-5 w-5" /><span>Distributor Application</span></CardTitle>
+                    <CardDescription>Apply to become an authorized distributor in your region.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={(e) => handleSubmit(e, 'distributor application')} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="dist-name">Full Name *</Label>
-                          <Input id="dist-name" required />
+                          <Input id="dist-name" name="name" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="dist-email">Email Address *</Label>
-                          <Input id="dist-email" type="email" required />
+                          <Input id="dist-email" name="email" type="email" required />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="dist-company">Company Name *</Label>
-                          <Input id="dist-company" required />
+                          <Input id="dist-company" name="company" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="dist-country">Country/Region *</Label>
-                          <Input id="dist-country" required />
+                          <Input id="dist-country" name="country" required />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="dist-experience">Distribution Experience *</Label>
-                        <Select>
+                        <Select name="experience">
                           <SelectTrigger>
                             <SelectValue placeholder="Years of experience" />
                           </SelectTrigger>
@@ -318,11 +291,10 @@ const Contact = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="dist-network">Distribution Network Details *</Label>
-                        <Textarea id="dist-network" rows={5} required />
+                        <Textarea id="dist-network" name="network" rows={5} required />
                       </div>
                       <Button type="submit" disabled={isSubmitting} className="w-full">
-                        <Send className="mr-2 h-4 w-4" />
-                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        <Send className="mr-2 h-4 w-4" />{isSubmitting ? 'Submitting...' : 'Submit Application'}
                       </Button>
                     </form>
                   </CardContent>
@@ -333,39 +305,34 @@ const Contact = () => {
               <TabsContent value="career">
                 <Card className="border-0 shadow-pharma-card">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Users className="h-5 w-5" />
-                      <span>Career Application</span>
-                    </CardTitle>
-                    <CardDescription>
-                      Apply for career opportunities at PharmaCorp.
-                    </CardDescription>
+                    <CardTitle className="flex items-center space-x-2"><Users className="h-5 w-5" /><span>Career Application</span></CardTitle>
+                    <CardDescription>Apply for career opportunities at PharmaCorp.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={(e) => handleSubmit(e, 'career application')} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="career-name">Full Name *</Label>
-                          <Input id="career-name" required />
+                          <Input id="career-name" name="name" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="career-email">Email Address *</Label>
-                          <Input id="career-email" type="email" required />
+                          <Input id="career-email" name="email" type="email" required />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="career-phone">Phone Number</Label>
-                          <Input id="career-phone" />
+                          <Input id="career-phone" name="phone" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="career-position">Position of Interest</Label>
-                          <Input id="career-position" />
+                          <Input id="career-position" name="position" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="career-experience">Relevant Experience</Label>
-                        <Select>
+                        <Select name="experience">
                           <SelectTrigger>
                             <SelectValue placeholder="Years of experience" />
                           </SelectTrigger>
@@ -380,17 +347,16 @@ const Contact = () => {
                       <div className="space-y-2">
                         <Label htmlFor="career-resume">Resume/CV</Label>
                         <div className="flex items-center space-x-2">
-                          <Input id="career-resume" type="file" accept=".pdf,.doc,.docx" />
+                          <Input id="career-resume" name="resume" type="file" accept=".pdf,.doc,.docx" />
                           <FileUp className="h-4 w-4 text-muted-foreground" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="career-cover">Cover Letter</Label>
-                        <Textarea id="career-cover" rows={5} />
+                        <Textarea id="career-cover" name="coverLetter" rows={5} />
                       </div>
                       <Button type="submit" disabled={isSubmitting} className="w-full">
-                        <Send className="mr-2 h-4 w-4" />
-                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        <Send className="mr-2 h-4 w-4" />{isSubmitting ? 'Submitting...' : 'Submit Application'}
                       </Button>
                     </form>
                   </CardContent>
