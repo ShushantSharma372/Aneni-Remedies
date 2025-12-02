@@ -12,7 +12,9 @@ import researchLab from '@/assets/research-lab.jpg';
 import manufacturing from '@/assets/manufacturing.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
 import qualityControl from '@/assets/quality-control.jpg';
+import MedicalCards from '@/components/ui/homeCard.tsx';
 import back1 from '@/assets/sample4.jpg';
+import CertificationsMarquee from '@/components/ui/certificatesMarquee';
 
 
 import { 
@@ -130,107 +132,40 @@ const Home = () => {
         <HeroCarousel slides={heroSlides} />
       </section>
 
-      {/* Stats Section (separate below hero) */}
-      <section className="relative bg-gradient-subtle py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="flex justify-center mb-4">
-                <div className="p-4 bg-white rounded-2xl shadow-glass group-hover:shadow-glow transition-all duration-500">
-                    <stat.icon className={`h-8 w-8 ${stat.color} group-hover:scale-110 transition-transform`} />
-                  </div>
-                </div>
-                <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       {/* Company Highlights */}
-      <section
-  className="py-20 bg-background bg-cover bg-center bg-no-repeat relative"
-  style={{
-    backgroundImage: `url(${back1})`,
-  }}
->
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose Aneni?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trusted by healthcare providers worldwide for our commitment to quality, innovation, and regulatory excellence.
-            </p>
-          </div>
+      <section>
+      <div className="container mx-auto">
+      {/* other content above */}
+      <h2 className="text-5xl py-20 text-center font-semibold text-foreground mb-4 
+                 transition-colors duration-300 
+                 group-hover:text-primary"
+                 style={{ fontFamily: "Georgia" }}>
+        Why Choose Aneni?
+      </h2>
+      
+      <MedicalCards />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 bg-gradient-card backdrop-blur-sm overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-overlay"></div>
-                  <div className="absolute top-4 right-4">
-                    <div className="p-3 bg-gradient-primary rounded-xl shadow-glow">
-                      <feature.icon className="h-8 w-8 text-primary-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-bold">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        {/* other content below */}
+      </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Certifications & Compliance
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our commitment to quality is validated by international certifications and regulatory approvals.
-            </p>
-          </div>
+      <section className="py-20 bg-background">
+  <div className="container mx-auto px-4 text-center mb-16">
+  <div className="h-20"></div> 
+  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+      Certifications & Quality Standards
+    </h2>
+    
+  </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              'ISO 9001:2015',
-              'GMP Certified',
-              'FDA Registered',
-              'WHO-GMP',
-              'CE Marking',
-              'COPP Certified'
-            ].map((cert, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-card border border-border rounded-lg p-6 hover:shadow-pharma-card transition-shadow">
-                  <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <div className="text-sm font-semibold text-foreground">{cert}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  {/* Logo Marquee */}
+  <CertificationsMarquee />
+</section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
