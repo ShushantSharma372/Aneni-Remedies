@@ -28,7 +28,7 @@ const TestimonialsCarousel = ({ testimonials }: TestimonialsCarouselProps) => {
         <CarouselContent>
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
-              <Card className="border-0 shadow-elegant hover:shadow-glow transition-all duration-500 bg-gradient-card backdrop-blur-sm">
+              <Card className="border-0 shadow-elegant hover:shadow-glow transition-all duration-500 bg-white backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
