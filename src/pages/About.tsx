@@ -9,6 +9,9 @@ import researchLab from '@/assets/research-lab.jpg';
 import sample from '@/assets/sample.jpg';
 import back1 from '@/assets/sample4.jpg';
 import map from '@/assets/map.png';
+import d2 from '@/assets/d2.jpg';
+import d1 from '@/assets/d1.jpg';
+import CertificationsMarquee from '@/components/ui/certificatesMarquee';
 import { 
   Award, 
   Globe2, 
@@ -24,28 +27,20 @@ import {
 const About = () => {
   const leadership = [
     {
-      name: 'Dr. A. Sharma',
-      title: 'Founder & Managing Director',
-      experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
+      name: 'Dr. Hardeep Wadhwa',
+      title: 'Founder',
+      description: 'Our Founder Dr. Hardeep is a medical graduate from KGMA (Bishkek)and Post graduate from KSMA (Krasnodar). He has done his higher studies from University of Maryland, USA. Arni Health Care greatly benefits from his contribution, as he not only established the company but he is the principal consultant, counsellor and personal advisor to our patients. Due to his medical expertise, extensive knowledge, fluency in multiple languages and vast experience, patients get benefitted all across.',
       education: 'MD, MBA in Healthcare Management',
+      image: d1,
+      experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
     },
     {
-      name: 'Dr. P. Nair',
-      title: 'Director – Exports & Business Development',
-      experience: 'Extensive experience in international marketing and regulatory affairs',
+      name: 'Suchitra Nautiyal',
+      title: 'Co- Founder and Director',
+      description: 'Mrs. Suchitra is allied health care graduate from AIIMS (Delhi) and MBA from NMIMS (Pune). She has 15 plus years of experience in managing Global Health Care Market at various levels. Viewing challenges as opportunities, she is an asset to the company.',
       education: 'PhD in Pharmaceutical Sciences',
-    },
-    {
-      name: 'Dr. R. Mehta',
-      title: 'Director – Manufacturing & Quality',
-      experience: '15+ years in large-scale pharmaceutical production and quality assurance',
-      education: 'M.Pharm, Certified in GMP & Regulatory Compliance',
-    },
-    {
-      name: 'Dr. S. Khan',
-      title: 'Director – Research & Development',
-      experience: 'Deep expertise in formulation development and product innovation',
-      education: 'PhD in Pharmaceutics',
+      image: d2,
+      experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
     },
   ];
 
@@ -88,7 +83,6 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-8">
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                About Aneni Remedies
               </Badge>
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
@@ -109,82 +103,78 @@ const About = () => {
 
       {/* Mission, Vision, Values */}
       <section
-  className="py-20 bg-background bg-cover bg-center bg-no-repeat relative"
+  className="py-20 relative overflow-hidden"
   style={{
-    backgroundImage: `url(${back1})`,
+    background: "linear-gradient(90deg, #ECE4FC, #FFFFFF)"
   }}
 >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-glass"></div>
-                <div className="relative flex items-center justify-center h-full">
-                  <Target className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-              </div>
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">Our Mission</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
-                  To provide cost-effective, innovation-driven, and superior quality pharmaceutical 
-                  products across the globe — committed to improving and enhancing the quality of life 
-                  through trust, excellence, and continuous care.
-                </CardDescription>
-              </CardContent>
-            </Card>
 
-            <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-glass"></div>
-                <div className="relative flex items-center justify-center h-full">
-                  <Eye className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-              </div>
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">Our Vision</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
-                  To be a global pharmaceutical company admired for its affordability, accessibility, 
-                  and quality of products — setting new benchmarks in ethical business practices and 
-                  global healthcare standards.
-                </CardDescription>
-              </CardContent>
-            </Card>
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute w-80 h-80 bg-purple-200 rounded-full blur-3xl opacity-40 -top-20 left-1/4"></div>
+    <div className="absolute w-80 h-80 bg-gray-200 rounded-full blur-3xl opacity-40 top-24 right-1/4"></div>
+    <div className="absolute w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-40 bottom-16 left-1/3"></div>
+  </div>
 
-            <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-glass"></div>
-                <div className="relative flex items-center justify-center h-full">
-                  <Heart className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-              </div>
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl group-hover:text-primary transition-colors duration-300">Our Values</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
-                  Ethics, quality, reliability, and consumer satisfaction form the foundation of everything 
-                  we do. We believe in innovation with integrity and in building long-term relationships 
-                  grounded in trust and transparency.
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+  
+  <div className="container mx-auto px-8 relative z-10">
+    {/* Header */}
+    <div className="mb-16 text-left" style={{ fontFamily: "Georgia" }}>
+      <div className="text-sm uppercase tracking-widest text-muted-foreground mb-2">
+        Principles
+      </div>
+      <h2 className="text-4xl font-semibold text-foreground mb-4 
+                 transition-colors duration-300 
+                 group-hover:text-primary"
+      style={{ fontFamily: "Georgia" }}>
+        Our Foundation
+      </h2>
+    </div>
+
+    {/* Cards */}
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Vision Card */}
+      <Card className="border-0 shadow-elegant hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-in-out text-center p-8 rounded-none bg-white" style={{ fontFamily: "Georgia" }}>
+        <h3 className="text-2xl font-semibold text-[#471959] mb-4" style={{ fontFamily: "Georgia" }}>Vision</h3>
+        <p className="text-base text-muted-foreground leading-relaxed mb-2">
+          To be a global pharmaceutical company admired for its affordability,
+          accessibility, and quality of products — setting new benchmarks in
+          ethical business practices and global healthcare standards.
+        </p>
+      </Card>
+
+      {/* Mission Card */}
+      <Card className="border-0 shadow-elegant hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-in-out text-center p-8 rounded-none bg-white" style={{ fontFamily: "Georgia" }}>
+        <h3 className="text-2xl text-[#471959] font-semibold mb-4" style={{ fontFamily: "Georgia" }}>Mission</h3>
+        <p className="text-base text-muted-foreground leading-relaxed mb-2">
+        To provide cost-effective, innovation-driven, and superior quality pharmaceutical products across the globe — committed to improving and enhancing the quality of life through trust, excellence, and continuous care.
+        </p>
+      </Card>
+
+      {/* Values Card */}
+      <Card className="border-0 shadow-elegant hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-in-out text-center p-8 rounded-none bg-white" style={{ fontFamily: "Georgia" }}>
+        <h3 className="text-2xl text-[#471959] font-semibold mb-4" style={{ fontFamily: "Georgia" }}>Values</h3>
+        <p className="text-base text-muted-foreground leading-relaxed mb-2">
+        Ethics, quality, reliability, and consumer satisfaction form the foundation of everything we do. We believe in innovation with integrity and in building long-term relationships grounded in trust and transparency.
+        </p>
+      </Card>
+    </div>
+  </div>
+</section>
+
+
 
             {/* Global Presence Section */}
-      <section className="py-20 bg-gradient-subtle">
-  <div className="container mx-auto px-4 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-      Our Presence in Central Asia
-    </h2>
-    <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+      <section className="py-20 bg-background">
+  <div className="container mx-auto px-8 text-center">
+  <h2
+        className="text-left text-4xl font-semibold text-foreground mb-4 py-4"
+        style={{ fontFamily: "Georgia" }}
+      >
+        Our Presence in Central Asia
+      </h2>
+    {/* <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
       Aneni Remedies has a strong presence across region — connecting healthcare solutions from Russia to Central Asia.
-    </p>
+    </p> */}
 
     <div className="flex justify-center">
       <img
@@ -197,93 +187,67 @@ const About = () => {
 </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Leadership Team
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Guided by a team of visionary medical professionals with deep expertise in 
-              pharmaceuticals, exports, and healthcare innovation.
+      <section className="py-20 bg-gray-100">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      {/* <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        Leadership Team
+      </h2> */}
+      {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Guided by a team of visionary medical professionals with deep expertise in 
+        pharmaceuticals, exports, and healthcare innovation.
+      </p> */}
+    </div>
+
+    <div className="space-y-16 max-w-6xl mx-auto">
+      {leadership.map((leader, index) => (
+        <div
+          key={index}
+          className={`flex flex-col md:flex-row items-center gap-8 ${
+            index % 2 === 0 ? "" : "md:flex-row-reverse"
+          }`}
+        >
+          {/* Image */}
+          <div className="relative flex-shrink-0">
+            <div className="absolute -top-4 -left-4 text-8xl text-primary font-bold">“</div>
+            <img
+              src={leader.image}
+              alt={leader.name}
+              className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white/20 shadow-lg"
+            />
+          </div>
+
+          {/* Text */}
+          <div className={`flex-1 space-y-4 text-foreground ${
+            index % 2 === 0 ? "" : "md:text-right"
+            }`}
+          >
+            <h3 className="text-3xl font-bold">{leader.name}</h3>
+            <p className="text-xl font-medium">{leader.title}</p>
+            <p className="text-l">
+              {leader.description}
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {leadership.map((leader, index) => (
-              <Card key={index} className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 bg-gradient-card backdrop-blur-sm overflow-hidden">
-                <div className="relative h-24 bg-gradient-primary overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-glass"></div>
-                  <div className="absolute bottom-4 left-6">
-                    <div className="w-16 h-16 bg-gradient-glass backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20">
-                      <UserCheck className="h-8 w-8 text-primary-foreground" />
-                    </div>
-                  </div>
-                </div>
-                <CardHeader className="pt-8">
-                  <div className="space-y-2">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{leader.name}</CardTitle>
-                    <CardDescription className="text-primary font-medium text-base">
-                      {leader.title}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 p-4 bg-gradient-glass rounded-lg">
-                    <div className="text-sm">
-                      <strong>Experience:</strong> {leader.experience}
-                    </div>
-                    <div className="text-sm">
-                      <strong>Education:</strong> {leader.education}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Certifications & Quality */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Certifications & Quality Standards
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our facilities and processes adhere to globally recognized quality and regulatory standards, 
-              ensuring consistent excellence in every product.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <Card key={index} className="border-0 shadow-pharma-card">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-gradient-primary rounded-lg">
-                      <Award className="h-6 w-6 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-lg">{cert.name}</CardTitle>
-                      <CardDescription>{cert.description}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-sm text-muted-foreground">
-                    <strong>Issued by:</strong> {cert.issuer}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+<section className="py-20 bg-background">
+  <div className="container mx-auto px-4 text-center">
+  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+      Certifications & Quality Standards
+    </h2>
+    </div>
+
+  {/* Logo Marquee */}
+  <CertificationsMarquee />
+</section>
 
       {/* Global Presence */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -296,7 +260,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-pharma-card text-center">
+            <Card className="border-0 shadow-pharma-card text-center bg-white">
               <CardHeader>
                 <div className="flex justify-center mb-4">
                   <Globe2 className="h-12 w-12 text-primary" />
@@ -312,7 +276,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-pharma-card text-center">
+            <Card className="border-0 shadow-pharma-card text-center bg-white">
               <CardHeader>
                 <div className="flex justify-center mb-4">
                   <TrendingUp className="h-12 w-12 text-primary" />
@@ -327,7 +291,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-pharma-card text-center">
+            <Card className="border-0 shadow-pharma-card text-center bg-white">
               <CardHeader>
                 <div className="flex justify-center mb-4">
                   <Shield className="h-12 w-12 text-primary" />
