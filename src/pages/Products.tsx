@@ -7,10 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/ui/footer';
-import capsule from '@/assets/capsule.png';
-import injection from '@/assets/injection.png';
-import tablet from '@/assets/tablet.png';
-import softgel from '@/assets/softgel.png';
+import tab1 from '@/assets/tab1.jpg';
+import tab2 from '@/assets/tab2.jpg';
+import tab3 from '@/assets/tab3.jpg';
+import tab4 from '@/assets/tab4.jpg';
+import ampoule from '@/assets/ampoule.png';
+import vial from '@/assets/vial.jpg';
+import softgel from '@/assets/sofgel.jpeg';
+import capsule from '@/assets/capsule.jpg';
 import sample2 from '@/assets/sample2.jpg';
 
 import { 
@@ -91,7 +95,7 @@ const Products = () => {
       description: 'Nimesulide tablet for pain relief and anti-inflammatory use.',
       status: 'Available',
       icon: Tablets,
-      image: tablet,
+      image: tab1,
     },
     {
       id: 2,
@@ -102,7 +106,7 @@ const Products = () => {
       description: 'Oral hypoglycemic agent for managing type 2 diabetes.',
       status: 'Available',
       icon: Tablets,
-      image: tablet,
+      image: tab2,
     },
     {
       id: 4,
@@ -113,7 +117,7 @@ const Products = () => {
       description: 'Combination therapy for type 2 diabetes mellitus.',
       status: 'Available',
       icon: Tablets,
-      image: tablet,
+      image: tab3,
     },
     {
       id: 5,
@@ -124,7 +128,7 @@ const Products = () => {
       description: 'Corticosteroid injection used for inflammation and allergy management.',
       status: 'Available',
       icon: Syringe,
-      image: injection,
+      image: vial,
     },
     {
       id: 6,
@@ -145,7 +149,7 @@ const Products = () => {
       description: 'SGLT2 inhibitor for type 2 diabetes management.',
       status: 'Available',
       icon: Tablets,
-      image: tablet,
+      image: tab4,
     },
     {
       id: 8,
@@ -156,7 +160,7 @@ const Products = () => {
       description: 'Nutritional supplement supporting fat metabolism and energy.',
       status: 'Available',
       icon: Syringe,
-      image: injection,
+      image: ampoule,
     },
     {
       id: 9,
@@ -224,14 +228,22 @@ const Products = () => {
       </section>
 
       {/* Product Categories Overview */}
-      <section className="py-16 bg-background">
+      <section className="py-16 relative overflow-hidden"
+      style={{
+        background: "linear-gradient(90deg, #fbf3f3, #FFFFFF)"
+      }}>
+      <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 -top-20 left-1/4"></div>
+    <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 top-24 right-1/4"></div>
+    <div className="absolute w-80 h-80 bg-purple-200 rounded-full blur-3xl opacity-40 bottom-16 left-1/3"></div>
+  </div>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
+              <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
                 <div className="relative flex items-center justify-center h-full">
-                  <Beaker className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                  <Beaker className="h-12 w-12 text-[#471959] opacity-80 group-hover:scale-110 transition-transform duration-500" />
                 </div>
               </div>
               <CardHeader className="pb-4">
@@ -245,10 +257,10 @@ const Products = () => {
             </Card>
 
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
+              <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
                 <div className="relative flex items-center justify-center h-full">
-                  <Shield className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                  <Shield className="h-12 w-12 text-[#471959] opacity-80 group-hover:scale-110 transition-transform duration-500" />
                 </div>
               </div>
               <CardHeader className="pb-4">
@@ -262,10 +274,10 @@ const Products = () => {
             </Card>
 
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
+              <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
                 <div className="relative flex items-center justify-center h-full">
-                  <Activity className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                  <Activity className="h-12 w-12 text-[#471959] opacity-80 group-hover:scale-110 transition-transform duration-500" />
                 </div>
               </div>
               <CardHeader className="pb-4">
@@ -279,10 +291,10 @@ const Products = () => {
             </Card>
 
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
-              <div className="relative h-32 bg-gradient-primary overflow-hidden">
+              <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
                 <div className="relative flex items-center justify-center h-full">
-                  <Globe2 className="h-12 w-12 text-primary-foreground opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                  <Globe2 className="h-12 w-12 text-[#471959] opacity-80 group-hover:scale-110 transition-transform duration-500" />
                 </div>
               </div>
               <CardHeader className="pb-4">
@@ -298,8 +310,87 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Products Grid */}
+{/* --- Products Grid --- */}
+<section className="bg-background">
+  <div className="container mx-auto px-4">
+    {/* Products Grid – Minimal Vital Grid Look */}
+<div className="mt-20">
+<h2 className="text-4xl font-semibold text-foreground mb-4 
+                 transition-colors duration-300 
+                 group-hover:text-primary"
+      style={{ fontFamily: "Georgia" }}>
+        Our Products
+      </h2>
+  <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+    {products.map((product) => (
+      <Card
+        key={product.id}
+        className="
+          border border-[rgba(0,0,0,0.06)]
+          shadow-sm
+          hover:shadow-md
+          transition-all
+          duration-300
+          rounded-xl
+          bg-white
+        "
+      >
+        <div className="p-6 flex flex-col items-left text-left">
+          
+          {/* Floating Product Image */}
+          <div className="h-56 overflow-hidden rounded-lg">
+            <img
+              src={product.image || '/images/default.png'}
+              alt={product.name}
+              className="
+                w-full h-full
+                object-cover
+                transition-transform
+                duration-300
+                hover:scale-105
+              "
+            />
+          </div>
+
+          {/* Product Name */}
+          <h2 className="py-4 text-xl font-semibold tracking-[0.1rem] text-gray-900">
+            {product.name}
+          </h2>
+
+          {/* Salt & Type */}
+          <p className="text-sm text-gray-500 text-left">{product.type}</p>
+
+          {/* Description */}
+          <p className="text-sm text-gray-400 mt-3 leading-relaxed max-w-xs">
+            {product.description}
+          </p>
+
+          {/* Call to Action */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="
+              mt-6
+              w-full
+              rounded-xl
+              text-sm
+              border-gray-300
+              hover:bg-gray-100
+            "
+            asChild
+          >
+            <Link to="/contact">Request Quote</Link>
+          </Button>
+        </div>
+      </Card>
+    ))}
+  </div>
+</div>
+
+
       {/* Search and Filter */}
-      <section className="py-8 bg-gradient-subtle">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-4">
@@ -332,71 +423,8 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Grid */}
-{/* --- Products Grid --- */}
-<section className="py-16 bg-background">
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {filteredProducts.map((product) => (
-        <Card
-          key={product.id}
-          className="
-            border-0
-            shadow-lg shadow-primary/10
-            hover:shadow-[0_0_35px_rgba(99,102,241,0.4)]
-            transition-all duration-500
-            group bg-gradient-card backdrop-blur-sm overflow-hidden
-          "
-        >
-          <div className="relative h-48 bg-white overflow-hidden flex items-center justify-center">
-            <img
-              src={product.image || '/images/default.png'}
-              alt={product.name}
-              className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute top-4 right-4">
-              <Badge
-                variant={product.status === 'Available' ? 'default' : 'secondary'}
-                className="shadow-glass backdrop-blur-sm"
-              >
-                {product.status}
-              </Badge>
-            </div>
-          </div>
-
-          <CardHeader>
-            <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
-              {/* {product.name} */}
-            </CardTitle>
-          </CardHeader>
-
-          <CardContent className="space-y-4">
-            <CardDescription className="leading-relaxed text-base">
-              {product.description}
-            </CardDescription>
-
-            <div className="space-y-2 p-4 bg-gradient-glass rounded-lg">
-              <div className="text-sm text-muted-foreground"><strong>Salt:</strong> {product.salt}</div>
-              {product.power && <div className="text-sm text-muted-foreground"><strong>Power:</strong> {product.power}</div>}
-              <div className="text-sm text-muted-foreground"><strong>Type:</strong> {product.type}</div>
-            </div>
-
-            <div className="flex gap-3 pt-4">
-              <Button variant="default" size="sm" className="flex-1 group/btn" asChild>
-                <Link to="/contact">
-                  <Mail className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform" />
-                  Request Quote
-                </Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-
-
           {/* Catalogue List (JSON Data + Pagination) */}
-      <section className="py-16 bg-background">
+      <section className="bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Complete Catalogue</h2>
 
@@ -453,6 +481,7 @@ const Products = () => {
               </Button>
             </div>
           )}
+          <div className="h-10"></div> 
         </div>
       </section>
 
