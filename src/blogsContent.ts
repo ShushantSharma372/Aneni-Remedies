@@ -30,6 +30,18 @@ export interface Blog {
       image: blog1,
     },
     {
+      id: 4,
+      title: 'Breakthrough in Pharmaceutical Research',
+      excerpt: 'Our latest R&D findings could change the way chronic illnesses are treated globally.',
+      content: `PharmaCorp has unveiled a major breakthrough in chronic illness treatment. Our research 
+  teams have developed a new molecule that shows promise in long-term therapy with fewer side 
+  effects...`,
+      author: 'Dr. Emily Carter',
+      date: 'Sep 15, 2025',
+      tags: '',
+      image: blog1,
+    },
+    {
       id: 2,
       title: 'Ensuring Quality in Every Step',
       excerpt: 'From raw materials to finished products, our quality assurance protocols set industry benchmarks.',
