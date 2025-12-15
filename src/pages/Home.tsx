@@ -45,25 +45,26 @@ const Home = () => {
       image: heroImage,
       imageAlt: 'Aneni Remedies Laboratory Facility'
     },
+    
     {
-      title: 'Research &',
-      subtitle: 'Innovation',
-      description: 'Our state-of-the-art research facilities and experienced scientists drive innovative pharmaceutical solutions to meet global healthcare challenges.',
-      badge: 'Innovation in Pharmaceuticals',
-      primaryAction: { text: 'Explore R&D', link: '/quality' },
-      secondaryAction: { text: 'View Blogs', link: '/blogs' },
-      image: researchLab,
-      imageAlt: 'Advanced Research Laboratory'
+      title: 'Formulation',
+      subtitle: 'Range',
+      description: 'A comprehensive range of pharmaceutical formulations including tablets, capsules, softgel capsules, syrups, eye drops, ampoules, vials, and other dosage forms designed to meet varied healthcare needs.',
+      badge: 'Diverse Product Portfolio',
+      primaryAction: { text: 'Quality Standards', link: '/about' },
+      secondaryAction: { text: 'Our Products', link: '/products' },
+      image: manufacturing,
+      imageAlt: 'Manufacturing Facility'
     },
     {
       title: 'Quality',
       subtitle: 'Manufacturing',
       description: 'GMP-certified manufacturing facilities ensure the highest quality standards, advanced production lines, and rigorous quality control for reliable healthcare solutions.',
       badge: 'GMP Certified Excellence',
-      primaryAction: { text: 'Quality Standards', link: '/about' },
-      secondaryAction: { text: 'Our Products', link: '/products' },
-      image: manufacturing,
-      imageAlt: 'Manufacturing Facility'
+      primaryAction: { text: 'Explore R&D', link: '/quality' },
+      secondaryAction: { text: 'View Blogs', link: '/blogs' },
+      image: researchLab,
+      imageAlt: 'Advanced Research Laboratory'
     }
   ];
   
@@ -97,31 +98,32 @@ const Home = () => {
   ];
 
   const testimonials = [
-  {
-    name: 'Dr. Sarah Kumar',
-    title: 'Chief Medical Officer, Central Health Network',
-    content: 'Aneni Remedies has been a trusted partner in Central Asia for years. Their commitment to quality and reliability is unmatched.',
-    rating: 5,
-  },
-  {
-    name: 'Michael Rahman',
-    title: 'Procurement Director, MediSupply Central',
-    content: 'Partnering with Aneni Remedies has significantly improved our supply chain efficiency. Outstanding product quality and service.',
-    rating: 5,
-  },
-  {
-    name: 'Dr. Priya Sharma',
-    title: 'Research Director, Global Pharma Initiative',
-    content: 'Their research capabilities and innovative approach to pharmaceutical development consistently exceed expectations.',
-    rating: 5,
-  },
-  {
-    name: 'James Liu',
-    title: 'CEO, HealthDistribute Asia',
-    content: 'Aneni Remedies understands the Central Asian market thoroughly. Their products and distribution network are world-class.',
-    rating: 5,
-  },
-];
+    {
+      name: 'Rina Mehta',
+      title: 'Pharmacy Owner, Sunrise Pharmacy',
+      content: 'Aneni Remedies has been a reliable supplier for our store. The quality of their products and timely deliveries make our work so much easier.',
+      rating: 5,
+    },
+    {
+      name: 'Arjun Patel',
+      title: 'Procurement Manager, GreenCare Clinic',
+      content: 'Working with Aneni Remedies has streamlined our stock management. Their products are consistent and dependable.',
+      rating: 5,
+    },
+    {
+      name: 'Simran Kaur',
+      title: 'Local Distributor, HealthMart',
+      content: 'We’ve been impressed with Aneni Remedies’ variety and quality. They are easy to work with and always meet our orders on time.',
+      rating: 5,
+    },
+    {
+      name: 'Vikram Singh',
+      title: 'Pharmacy Assistant, CityMed Store',
+      content: 'Aneni Remedies provides excellent products for our daily needs. Their support team is responsive and helpful whenever we have questions.',
+      rating: 5,
+    },
+  ];
+  
 
   return (
     <div className="min-h-screen bg-background">
@@ -141,7 +143,7 @@ const Home = () => {
                  transition-colors duration-300 
                  group-hover:text-primary"
                  style={{ fontFamily: "Georgia" }}>
-        Why Choose Aneni?
+        Why Choose ANENI?
       </h2>
       
       <MedicalCards />
