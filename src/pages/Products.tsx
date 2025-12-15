@@ -88,7 +88,7 @@ const Products = () => {
   const products = [
     {
       id: 1,
-      name: 'MEDILAN',
+      name: 'TABLET',
       salt: 'Nimesulide',
       power: '100mg',
       type: 'Tablet',
@@ -99,7 +99,7 @@ const Products = () => {
     },
     {
       id: 2,
-      name: 'ENIMET 500',
+      name: 'TABLET',
       salt: 'Metformin Hydrochloride (Hypoglycemic agent)',
       power: '500mg',
       type: 'Tablet',
@@ -110,7 +110,7 @@ const Products = () => {
     },
     {
       id: 4,
-      name: 'GERMIL M1',
+      name: 'TABLET',
       salt: 'Glimepiride + Metformin Hydrochloride (Hypoglycemic agent)',
       power: '1mg + 500mg',
       type: 'Tablet',
@@ -121,7 +121,7 @@ const Products = () => {
     },
     {
       id: 5,
-      name: 'MEDOSPAN',
+      name: 'VIAL',
       salt: 'Betamethasone',
       power: '2mg + 5mg/ml',
       type: 'Injection Suspension',
@@ -132,7 +132,7 @@ const Products = () => {
     },
     {
       id: 6,
-      name: 'VEKCOLIN',
+      name: 'SOFTGEL CAPSULE',
       salt: 'Clindamycin + Clotrimazole + Tinidazole',
       type: 'Softgel Capsule',
       description: 'Antibacterial, antifungal, and antiprotozoal combination capsule.',
@@ -142,7 +142,7 @@ const Products = () => {
     },
     {
       id: 7,
-      name: 'DAPALOZIN',
+      name: 'TABLET',
       salt: 'Dapagliflozin',
       power: '10mg',
       type: 'Tablet',
@@ -153,7 +153,7 @@ const Products = () => {
     },
     {
       id: 8,
-      name: 'LEVO-IN',
+      name: 'LYOPHILIZED AMPOULE',
       salt: 'Levocarnitine',
       power: '200mg/ml',
       type: 'Injection',
@@ -164,7 +164,7 @@ const Products = () => {
     },
     {
       id: 9,
-      name: 'KALKRA D3',
+      name: 'CAPSULE',
       salt: 'Vitamin D3',
       power: '500mg',
       type: 'Capsule',
@@ -247,13 +247,16 @@ const Products = () => {
                 </div>
               </div>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">Bulk Drugs</CardTitle>
+                <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">
+                  Finished Formulations
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  High-purity APIs and intermediates with complete documentation and regulatory compliance.
+                Bulk supply of diverse pharmaceutical formulations for all market requirements.
                 </CardDescription>
               </CardContent>
+
             </Card>
 
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
