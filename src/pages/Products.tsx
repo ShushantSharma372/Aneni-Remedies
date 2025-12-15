@@ -271,7 +271,7 @@ const Products = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Ready-to-market finished formulations including tablets, capsules, and liquids.
+                  Ready-to-market finished formulations including injectibles, tablets, capsules, and liquids.
                 </CardDescription>
               </CardContent>
             </Card>
