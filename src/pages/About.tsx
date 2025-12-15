@@ -29,7 +29,7 @@ const About = () => {
     {
       name: 'Dr. Hardeep Wadhwa',
       title: 'Founder',
-      description: 'Our Founder Dr. Hardeep is a medical graduate from KGMA (Bishkek) and Post graduate from KSMA (Krasnodar). He has done his higher studies from University of Maryland, USA. Due to his medical expertise, extensive knowledge, fluency in multiple languages and vast experience, partners get benefitted all across.',
+      description: 'Dr. Hardeep, our Founder, is a distinguished medical professional with a strong international academic and clinical background. He earned his MBBS from KGMA, Bishkek, and completed his MD at KSMA, Krasnodar. He further advanced his expertise through higher studies at the University of Maryland, USA. With extensive clinical knowledge, fluency in multiple languages, and broad professional experience, Dr. Hardeep provides exceptional value to our partners, enabling impactful collaborations across diverse healthcare settings.',
       education: 'MD, MBA in Healthcare Management',
       image: d1,
       experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
