@@ -58,7 +58,7 @@ const QualityRD = () => {
                   <span className="bg-gradient-hero bg-clip-text text-transparent"> Excellence</span>
               </h1>
                 <p className="text-xl text-foreground leading-relaxed">
-                At PharmaCorp, quality and research form the backbone of everything we do. <br></br>
+                At Aneni Remedies, quality and research form the backbone of everything we do. <br></br>
                 From innovative formulations to world-class quality standards, <br></br>
                 we are committed to advancing healthcare globally.
 
