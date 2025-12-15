@@ -29,7 +29,7 @@ const About = () => {
     {
       name: 'Dr. Hardeep Wadhwa',
       title: 'Founder',
-      description: 'Our Founder Dr. Hardeep is a medical graduate from KGMA (Bishkek)and Post graduate from KSMA (Krasnodar). He has done his higher studies from University of Maryland, USA. Arni Health Care greatly benefits from his contribution, as he not only established the company but he is the principal consultant, counsellor and personal advisor to our patients. Due to his medical expertise, extensive knowledge, fluency in multiple languages and vast experience, patients get benefitted all across.',
+      description: 'Our Founder Dr. Hardeep is a medical graduate from KGMA (Bishkek) and Post graduate from KSMA (Krasnodar). He has done his higher studies from University of Maryland, USA. Due to his medical expertise, extensive knowledge, fluency in multiple languages and vast experience, partners get benefitted all across.',
       education: 'MD, MBA in Healthcare Management',
       image: d1,
       experience: 'Over 20 years in pharmaceutical research and global healthcare operations',
