@@ -6,13 +6,13 @@ import qualityControl from '@/assets/quality-control.jpg';
 
 const cards = [
   {
-    title: "Advanced R&D",
-    text: `Cutting-edge research facilities and expert scientists focused on developing innovative pharmaceutical solutions for both local and international markets.`,
+    title: "Product Range",
+    text: `Our product range spans multiple dosage forms including tablets, capsules, softgel capsules, syrups, eye drops, ampoules, and vials, catering to diverse therapeutic requirements across markets.`,
     image: manufacturing,
     layout: "right",
-    bgColor: "#e8e0f2",
+    bgColor: "#DBE9F4",
   },
-  {
+   {
     title: "Quality Assurance",
     text: `ISO 9001:2015 and WHO-GMP certified manufacturing processes ensuring the highest quality standards and safety compliance.`,
     image: qualityControl,
