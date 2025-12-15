@@ -54,7 +54,7 @@ const QualityRD = () => {
         <div className="container mx-auto px-4 text-center max-w-3xl">
         <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Quality and Research
+                  Quality
                   <span className="bg-gradient-hero bg-clip-text text-transparent"> Excellence</span>
               </h1>
                 <p className="text-xl text-foreground leading-relaxed">
