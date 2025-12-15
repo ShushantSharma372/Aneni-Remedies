@@ -1,6 +1,6 @@
 import React from 'react';
 // Assuming these imports are correct for your project structure
-import cert1 from '@/assets/cert1.jpg';
+import cert1 from '@/assets/cert1.jpeg';
 import cert2 from '@/assets/cert2.png';
 import cert3 from '@/assets/cert3.png';
 import cert4 from '@/assets/cert4.jpg';
@@ -36,5 +36,6 @@ const CertificationsRow = () => {
     </div>
   );
 };
+
 
 export default CertificationsRow;
