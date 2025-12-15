@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <FileText className="h-4 w-4" />
-                <span>GMP Certified</span>
+                <span>WHO GMP Certified</span>
               </div>
             </div>
           </div>
