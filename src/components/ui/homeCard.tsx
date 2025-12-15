@@ -7,7 +7,7 @@ import qualityControl from '@/assets/quality-control.jpg';
 const cards = [
   {
     title: "Product Range",
-    text: `Our product range spans multiple dosage forms including tablets, capsules, softgel capsules, syrups, eye drops, ampoules, and vials, catering to diverse therapeutic requirements across markets.`,
+    text: `Our product range spans multiple dosage forms including injectibles, ampoules, vials, tablets, capsules, softgel capsules, syrups, and eye drops, catering to diverse therapeutic requirements across markets.`,
     image: manufacturing,
     layout: "right",
     bgColor: "#DBE9F4",
