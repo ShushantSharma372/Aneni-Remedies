@@ -1,6 +1,5 @@
 import React from "react";
-import researchLab from '@/assets/research-lab.jpg';
-import manufacturing from '@/assets/manufacturing.jpg';
+import manufacturing from '@/assets/manufacturing1.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
 import qualityControl from '@/assets/quality-control.jpg';
 
