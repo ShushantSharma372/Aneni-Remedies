@@ -1,4 +1,5 @@
-import React, { useState,  useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,18 +11,20 @@ import Footer from '@/components/ui/footer';
 import tab1 from '@/assets/tab1.jpg';
 import tab2 from '@/assets/tab2.jpg';
 import tab3 from '@/assets/tab3.jpg';
-import tab4 from '@/assets/tab4.jpg';
+import syrup from '@/assets/syrup.jpg';
+import suspension from '@/assets/suspension.jpeg';
 import ampoule from '@/assets/ampoule.png';
 import vial from '@/assets/vial.jpg';
-import softgel from '@/assets/sofgel.jpeg';
+import softgel from '@/assets/sofgel.jpg';
 import capsule from '@/assets/capsule.jpg';
+import cream from '@/assets/cream.jpg';
+import drops from '@/assets/drops.jpg';
 import sample2 from '@/assets/sample2.jpg';
 
 import { 
   Search, 
   Filter,
   ArrowRight,
-  FileText,
   Beaker,
   Shield,
   Truck,
@@ -29,25 +32,37 @@ import {
   Syringe,
   Tablets,
   Download,
-  Heart,
   Pill,
-  FlaskConical,
-  Mail,
-  Microscope,
   Activity,
-  Zap
+  Mail
 } from 'lucide-react';
-import manufacturing from '@/assets/manufacturing.jpg';
-import { table } from 'console';
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'; // assuming Tabs component
+
+const productTypes = [
+  "Vial / Lyophilized Vial",
+  "Tablet",
+  "Capsule",
+  "Softgel Capsules",
+  "Ampoule",
+  "Syrup",
+  "Suspension",
+  "Cream and Ointment",
+  "Drops"
+];
+
+const itemsPerPage = 10;
 
 const Products = () => {
+  const tabsRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  // --- Catalogue states ---
   const [allMedicines, setAllMedicines] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const [currentTab, setCurrentTab] = useState(productTypes[0]);
+  const [tabPages, setTabPages] = useState(
+    productTypes.reduce((acc, type) => ({ ...acc, [type]: 1 }), {})
+  );
 
   useEffect(() => {
     fetch('/data/Simpleproducts.json')
@@ -57,124 +72,90 @@ const Products = () => {
   }, []);
 
   const categories = [
-    { value: 'all', label: 'All Products' }, 
+    { value: 'all', label: 'All Products' },
     { value: 'ANTI-ALLERGICS/ANTI-COLD/ANTI-ASTHMATICS', label: 'Anti-Allergics/Anti-Cold/Anti-Asthmatics' },
     { value: 'ANTI-CHOLESTEREMIC', label: 'Anti-Cholesteremic' },
     { value: 'ANTI-DIABETIC', label: 'Anti-Diabetic' },
     { value: 'ANTI-DIARRHEAL', label: 'Anti-Diarrheal' },
-    { value: 'ANTI-DIARRHOEALS, ANTI-SPASMODICS, ANTI-PROTOZOALS & LAXATIVES', label: 'Anti-Diarrhoeals, Anti-Spasmodics, Anti-Protozoals & Laxatives' },
     { value: 'ANTI-EMETICS/ANTI-NAUSEANTS', label: 'Anti-Emetics/Anti-Nauseants' },
     { value: 'ANTI-FUNGALS & ANTI-LEPROTICS', label: 'Anti-Fungals & Anti-Leprotics' },
-    { value: 'anti-fungal', label: 'Anti-Fungal' },
     { value: 'ANTI-MALARIALS', label: 'Anti-Malarials' },
     { value: 'ANTI-PROTOZOAL', label: 'Anti-Protozoal' },
     { value: 'ANTI-VIRAL', label: 'Anti-Viral' },
+    { value: 'LYOPHILIZED RANGE', label: 'Lyophilized Vial' },
     { value: 'ANTACIDS/ANTI-ULCERANTS/ANTI-GERD', label: 'Antacids/Anti-Ulcerants/Anti-GERD' },
-    { value: 'BETA LACTUM ANTIBIOTICS (CEPHALOSPORIN ANTIBIOTICS)', label: 'Beta Lactum Antibiotics (Cephalosporin Antibiotics)' },
-    { value: 'bulk-drugs', label: 'Bulk Drugs' },
+    { value: 'BETA LACTUM ANTIBIOTICS (CEPHALOSPORIN ANTIBIOTICS)', label: 'Beta Lactum Antibiotics' },
     { value: 'CARDIOVASCULAR', label: 'Cardiovascular' },
     { value: 'contract-manufacturing', label: 'Contract Manufacturing' },
     { value: 'DIURETICS', label: 'Diuretics' },
     { value: 'ERECTILE DYSFUNCTION', label: 'Erectile Dysfunction' },
     { value: 'NON-BETA LACTUM ANTIBIOTICS / ANTIBACTERIAL', label: 'Non-Beta Lactum Antibiotics / Antibacterial' },
     { value: 'narcotics', label: 'Narcotics' },
-    { value: 'pharma-supplies', label: 'Pharma Supplies' },
-    { value: 'STEROIDS', label: 'Steroids' },
-    { value: 'tablets', label: 'Tablets' },
-    { value: 'General', label: 'General' },
-    { value: 'regulatory-services', label: 'Regulatory Services' },
+    { value: 'DRY POWDER', label: 'Dry Powder' },
+    { value: 'LIQUID', label: 'Liquid' },
+    { value: 'ANTI-ALLERGICS/ANTI-COLD/ANTI-ASTHMATICS', label: 'Anti-Allergics / Anti-Cold / Anti-Asthmatics' },
+  { value: 'ANTIHISTAMINE DRUGS', label: 'Antihistamines' },
+  { value: 'ANTIBIOTICS', label: 'Antibiotics' },
+  { value: 'ANTI-DIABETIC', label: 'Anti-Diabetic' },
+  { value: 'ANTI-MALARIALS', label: 'Anti-Malarials' },
+  { value: 'ANTI-PROTOZOAL', label: 'Anti-Protozoal' },
+  { value: 'ANTI-VIRAL', label: 'Anti-Viral' },
+  { value: 'ANTI-FUNGALS & ANTI-LEPROTICS', label: 'Anti-Fungals & Anti-Leprotics' },
+  { value: 'ANTACIDS/ANTI-ULCERANTS/ANTI-GERD', label: 'Antacids / Anti-Ulcer / GERD' },
+  { value: 'CARDIOVASCULAR', label: 'Cardiovascular' },
+  { value: 'DIURETICS', label: 'Diuretics' },
+  { value: 'CENTRAL NERVOUS SYSTEM & SOME PSYCHIATRY PRODUCTS', label: 'CNS & Psychiatry' },
+  { value: 'MUSCULO-SKELETAL/ANALGESIC PRODUCTS', label: 'Musculo-Skeletal / Analgesic' },
+  { value: 'NSAIDs', label: 'NSAIDs' },
+  { value: 'VITAMINS & NUTRACEUTICALS', label: 'Vitamins & Nutraceuticals' },
+  { value: 'NUTRITIONAL PRODUCTS', label: 'Nutritional Products' },
+  { value: 'DERMATOLOGY', label: 'Dermatology' },
+  { value: 'UROLOGY PRODUCTS / ANTI-HYPERTENSIVE DRUG', label: 'Urology / Anti-Hypertensive' },
+  { value: 'ERECTILE DYSFUNCTION', label: 'Erectile Dysfunction' },
+  { value: 'CRITICAL CARE & ICU', label: 'Critical Care & ICU' },
   ];
 
   const products = [
     {
-      id: 1,
-      name: 'TABLET',
-      salt: 'Nimesulide',
-      power: '100mg',
-      type: 'Tablet',
-      description: 'Nimesulide tablet for pain relief and anti-inflammatory use.',
-      status: 'Available',
-      icon: Tablets,
-      image: tab1,
+      id: 1, name: 'TABLET', salt: 'Nimesulide', power: '100mg', type: 'Tablets',
+      description: 'Nimesulide tablet for pain relief and anti-inflammatory use.', status: 'Available',
+      icon: Tablets, image: tab1
     },
     {
-      id: 2,
-      name: 'TABLET',
-      salt: 'Metformin Hydrochloride (Hypoglycemic agent)',
-      power: '500mg',
-      type: 'Tablet',
-      description: 'Oral hypoglycemic agent for managing type 2 diabetes.',
-      status: 'Available',
-      icon: Tablets,
-      image: tab2,
+      id: 2, name: 'TABLET', salt: 'Metformin Hydrochloride', power: '500mg', type: 'Tablets',
+      description: 'Oral hypoglycemic agent for managing type 2 diabetes.', status: 'Available',
+      icon: Tablets, image: tab2
     },
     {
-      id: 4,
-      name: 'TABLET',
-      salt: 'Glimepiride + Metformin Hydrochloride (Hypoglycemic agent)',
-      power: '1mg + 500mg',
-      type: 'Tablet',
-      description: 'Combination therapy for type 2 diabetes mellitus.',
-      status: 'Available',
-      icon: Tablets,
-      image: tab3,
+      id: 5, name: 'VIAL', salt: 'Betamethasone', power: '2mg + 5mg/ml', type: 'Vials',
+      description: 'Corticosteroid injection used for inflammation and allergy management.', status: 'Available',
+      icon: Syringe, image: vial
     },
     {
-      id: 5,
-      name: 'VIAL',
-      salt: 'Betamethasone',
-      power: '2mg + 5mg/ml',
-      type: 'Injection Suspension',
-      description: 'Corticosteroid injection used for inflammation and allergy management.',
-      status: 'Available',
-      icon: Syringe,
-      image: vial,
+      id: 6, name: 'SOFTGEL CAPSULE', salt: 'Clindamycin + Clotrimazole + Tinidazole', type: 'Softgel',
+      description: 'Antibacterial, antifungal, and antiprotozoal combination capsule.', status: 'Available',
+      icon: Pill, image: softgel
     },
     {
-      id: 6,
-      name: 'SOFTGEL CAPSULE',
-      salt: 'Clindamycin + Clotrimazole + Tinidazole',
-      type: 'Softgel Capsule',
-      description: 'Antibacterial, antifungal, and antiprotozoal combination capsule.',
-      status: 'Available',
-      icon: Pill,
-      image: softgel,
+      id: 8, name: 'LYOPHILIZED AMPOULE', salt: 'Levocarnitine', power: '200mg/ml', type: 'Ampoule',
+      description: 'Nutritional supplement supporting fat metabolism and energy.', status: 'Available',
+      icon: Syringe, image: ampoule
     },
     {
-      id: 7,
-      name: 'TABLET',
-      salt: 'Dapagliflozin',
-      power: '10mg',
-      type: 'Tablet',
-      description: 'SGLT2 inhibitor for type 2 diabetes management.',
-      status: 'Available',
-      icon: Tablets,
-      image: tab4,
-    },
-    {
-      id: 8,
-      name: 'LYOPHILIZED AMPOULE',
-      salt: 'Levocarnitine',
-      power: '200mg/ml',
-      type: 'Injection',
-      description: 'Nutritional supplement supporting fat metabolism and energy.',
-      status: 'Available',
-      icon: Syringe,
-      image: ampoule,
-    },
-    {
-      id: 9,
-      name: 'CAPSULE',
-      salt: 'Vitamin D3',
-      power: '500mg',
-      type: 'Capsule',
-      description: 'Vitamin D3 supplement for bone health and calcium absorption.',
-      status: 'Available',
-      icon: Pill,
-      image: capsule,
+      id: 9, name: 'CAPSULE', salt: 'Vitamin D3', power: '500mg', type: 'Capsules',
+      description: 'Vitamin D3 supplement for bone health and calcium absorption.', status: 'Available',
+      icon: Pill, image: capsule
     },
   ];
-  
+
+  const filteredByTypeAndCategory = (type) => {
+    return allMedicines.filter((med) => {
+      const matchesType = med.type?.toLowerCase() === type.toLowerCase();
+      const matchesCategory = selectedCategory === 'all' || med.category === selectedCategory;
+      const matchesSearch = med.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesType && matchesCategory && matchesSearch;
+    });
+  };
 
   const filterFunc = (item) => {
     const matchesSearch =
@@ -185,41 +166,33 @@ const Products = () => {
     return matchesSearch && matchesCategory;
   };
 
-  const filteredProducts = products.filter(filterFunc);
-  const filteredAll = allMedicines.filter(filterFunc);
+  const handlePageChange = (type, newPage) => {
+    setTabPages((prev) => ({ ...prev, [type]: newPage }));
+  };
 
-  const totalPages = Math.ceil(filteredAll.length / itemsPerPage);
-  const paginatedAll = filteredAll.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const filteredByType = (type) => {
+    return allMedicines.filter((med) => med.type?.toLowerCase() === type.toLowerCase());
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section
-          className="relative py-28 bg-cover bg-center bg-no-repeat overflow-hidden"
-          style={{
-            backgroundImage: `url(${sample2})`,
-          }}
-        >
+        className="relative py-28 bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ backgroundImage: `url(${sample2})` }}
+      >
         <div className="absolute inset-0 bg-gradient-glass"></div>
         <div className="relative container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-               
-              </Badge>
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Pharmaceutical 
-                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Excellence</span>
+                  Pharmaceutical <span className="bg-gradient-hero bg-clip-text text-transparent">Excellence</span>
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  Discover our comprehensive range of high-quality pharmaceutical products, 
-                  manufactured to the highest international standards with cutting-edge technology and rigorous quality control.
+                  Discover our comprehensive range of high-quality pharmaceutical products, manufactured to the highest standards.
                 </p>
               </div>
             </div>
@@ -228,16 +201,13 @@ const Products = () => {
       </section>
 
       {/* Product Categories Overview */}
-      <section className="py-16 relative overflow-hidden"
-      style={{
-        background: "linear-gradient(90deg, #fbf3f3, #FFFFFF)"
-      }}>
-      <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 -top-20 left-1/4"></div>
-    <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 top-24 right-1/4"></div>
-    <div className="absolute w-80 h-80 bg-purple-200 rounded-full blur-3xl opacity-40 bottom-16 left-1/3"></div>
-  </div>
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative overflow-hidden" style={{ background: "linear-gradient(90deg, #fbf3f3, #FFFFFF)" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 -top-20 left-1/4"></div>
+          <div className="absolute w-80 h-80 bg-white-200 rounded-full blur-3xl opacity-40 top-24 right-1/4"></div>
+          <div className="absolute w-80 h-80 bg-purple-200 rounded-full blur-3xl opacity-40 bottom-16 left-1/3"></div>
+        </div>
+        <div className="container mx-auto px-4" >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
               <div className="relative h-32 bg-white overflow-hidden">
@@ -247,18 +217,14 @@ const Products = () => {
                 </div>
               </div>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">
-                  Finished Formulations
-                </CardTitle>
+                <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">Finished Formulations</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                Bulk supply of diverse pharmaceutical formulations for all market requirements.
+                  Bulk supply of diverse pharmaceutical formulations for all market requirements.
                 </CardDescription>
               </CardContent>
-
             </Card>
-
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
               <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
@@ -275,7 +241,6 @@ const Products = () => {
                 </CardDescription>
               </CardContent>
             </Card>
-
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
               <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
@@ -292,7 +257,6 @@ const Products = () => {
                 </CardDescription>
               </CardContent>
             </Card>
-
             <Card className="group border-0 shadow-elegant hover:shadow-glow transition-all duration-500 text-center bg-gradient-card backdrop-blur-sm overflow-hidden">
               <div className="relative h-32 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-glass"></div>
@@ -314,86 +278,60 @@ const Products = () => {
       </section>
 
       {/* Products Grid */}
-{/* --- Products Grid --- */}
-<section className="bg-background">
+      <section className="bg-background py-10">
   <div className="container mx-auto px-4">
-    {/* Products Grid – Minimal Vital Grid Look */}
-<div className="mt-20">
-<h2 className="text-4xl font-semibold text-foreground mb-4 
-                 transition-colors duration-300 
-                 group-hover:text-primary"
-      style={{ fontFamily: "Georgia" }}>
-        Our Products
-      </h2>
-  <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-    {products.map((product) => (
-      <Card
-        key={product.id}
-        className="
-          border border-[rgba(0,0,0,0.06)]
-          shadow-sm
-          hover:shadow-md
-          transition-all
-          duration-300
-          rounded-xl
-          bg-white
-        "
-      >
-        <div className="p-6 flex flex-col items-left text-left">
-          
-          {/* Floating Product Image */}
-          <div className="h-56 overflow-hidden rounded-lg">
-            <img
-              src={product.image || '/images/default.png'}
-              alt={product.name}
-              className="
-                w-full h-full
-                object-cover
-                transition-transform
-                duration-300
-                hover:scale-105
-              "
-            />
-          </div>
+    <h2 className="text-4xl font-semibold text-foreground mb-12 text-center">
+      Explore Our Product Categories
+    </h2>
 
-          {/* Product Name */}
-          <h2 className="py-4 text-xl font-semibold tracking-[0.1rem] text-gray-900">
-            {product.name}
-          </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {productTypes.map((type) => {
+        // Optional: You can map type to an image
+        const typeImage = {
+          Tablet: tab3,
+          Capsule: capsule,
+          "Vial / Lyophilized Vial": vial,
+          Ampoule: ampoule,
+          Suspension: suspension,
+          Syrup: syrup,
+          "Softgel Capsules": softgel,
+          "Cream and Ointment": cream,
+          "Drops": drops,
+        }[type];
 
-          {/* Salt & Type */}
-          <p className="text-sm text-gray-500 text-left">{product.type}</p>
-
-          {/* Description */}
-          <p className="text-sm text-gray-400 mt-3 leading-relaxed max-w-xs">
-            {product.description}
-          </p>
-
-          {/* Call to Action */}
-          <Button
-            variant="outline"
-            size="sm"
-            className="
-              mt-6
-              w-full
-              rounded-xl
-              text-sm
-              border-gray-300
-              hover:bg-gray-100
-            "
-            asChild
-          >
-            <Link to="/contact">Request Quote</Link>
-          </Button>
-        </div>
-      </Card>
-    ))}
+        return (
+          <Card key={type} className="border border-[rgba(0,0,0,0.06)] shadow-sm hover:shadow-md transition-all duration-300 rounded-xl bg-white">
+            <div className="h-48 overflow-hidden">
+              <img
+                src={typeImage || '/images/default.png'}
+                alt={type}
+                className="w-full h-full rounded-xl object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+            <div className="p-2 text-center">
+              <h2 className="py-4 text-xl font-semibold tracking-[0.1rem] text-gray-900">{type}</h2>
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-2 w-full rounded-xl text-sm border-gray-300 hover:bg-gray-100"
+                onClick={() => {
+                  setCurrentTab(type); // Switch the tab to the category they clicked
+                  tabsRef.current?.scrollIntoView({ behavior: 'smooth' }); // Scroll down
+                }}
+              >
+                Explore
+              </Button>
+            </div>
+          </Card>
+        );
+      })}
+    </div>
   </div>
-</div>
+</section>
 
 
-      {/* Search and Filter */}
-      <section className="py-20 bg-white">
+      {/* Search & Filter */}
+      <section ref={tabsRef} className="py-10 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-4">
@@ -414,9 +352,7 @@ const Products = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((category) => (
-                      <SelectItem key={category.value} value={category.value}>
-                        {category.label}
-                      </SelectItem>
+                      <SelectItem key={category.value} value={category.value}>{category.label}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -426,101 +362,90 @@ const Products = () => {
         </div>
       </section>
 
-          {/* Catalogue List (JSON Data + Pagination) */}
+      {/* Complete Catalogue Tabs */}
       <section className="bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Complete Catalogue</h2>
-
-          <div className="divide-y rounded-lg border">
-            {paginatedAll.map((med) => (
-              <div
-                key={med.id}
-                className="flex items-center justify-between p-4 hover:bg-muted/30 transition-colors"
-              >
-                <div>
-                  <p className="font-medium">{med.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {categories.find((c) => c.value === med.category)?.label}
-                  </p>
-                </div>
-                <Button asChild size="sm">
-                  <Link to="/contact">
-                    <Mail className="mr-2 h-4 w-4" /> Request
-                  </Link>
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination Controls */}
-          {totalPages > 1 && (
-            
-            <div className="flex justify-center gap-2 mt-6">
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((p) => p - 1)}
-              >
-                Prev
-              </Button>
-              {/* {Array.from({ length: totalPages }, (_, i) => (
-                <Button
-                  key={i + 1}
-                  size="sm"
-                  variant={currentPage === i + 1 ? 'default' : 'outline'}
-                  onClick={() => setCurrentPage(i + 1)}
+          <Tabs value={currentTab} onValueChange={setCurrentTab}>
+          <TabsList className="mb-6 flex justify-between flex-wrap gap-2 bg-transparent border-b-2 border-gray-200">
+              {productTypes.map((type) => (
+                <TabsTrigger
+                  key={type}
+                  value={type}
+                  className="
+                    flex-1
+                    text-center
+                    bg-transparent
+                    border-none
+                    text-gray-600
+                    font-medium
+                    py-2
+                    px-4
+                    rounded-lg
+                    hover:bg-gray-100
+                    hover:text-primary
+                    data-[state=active]:bg-primary/10
+                    data-[state=active]:text-primary
+                    transition-colors
+                    duration-300
+                  "
                 >
-                  {i + 1}
-                </Button>
-              ))} */}
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((p) => p + 1)}
-              >
-                Next
-              </Button>
-            </div>
-          )}
-          <div className="h-10"></div> 
-        </div>
-      </section>
+                  {type}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-16">
-              <div className="text-muted-foreground text-lg mb-4">
-                No products found matching your criteria.
-              </div>
-              <Button variant="outline" onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}>
-                Clear Filters
-              </Button>
-            </div>
-          )}
+
+            {productTypes.map((type) => {
+              const filtered = filteredByTypeAndCategory(type);
+              const totalPages = Math.ceil(filtered.length / itemsPerPage);
+              const currentPage = tabPages[type];
+              const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+              return (
+                <TabsContent key={type} value={type}>
+                  <h3 className="text-xl font-semibold mb-4">{type}</h3>
+                  <div className="divide-y rounded-lg border">
+                    {paginated.map((med) => (
+                      <div key={med.id} className="flex items-center justify-between p-4 hover:bg-muted/30 transition-colors">
+                        <div>
+                          <p className="font-medium">{med.name}</p>
+                          <p className="text-sm text-muted-foreground">{med.salt || med.description}</p>
+                        </div>
+                        <Button asChild size="sm">
+                          <Link to="/contact"><Mail className="mr-2 h-4 w-4" /> Request</Link>
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+
+                  {totalPages > 1 && (
+                    <div className="flex justify-center gap-2 mt-6">
+                      <Button variant="outline" size="sm" disabled={currentPage === 1} onClick={() => handlePageChange(type, currentPage - 1)}>Prev</Button>
+                      <Button variant="outline" size="sm" disabled={currentPage === totalPages} onClick={() => handlePageChange(type, currentPage + 1)}>Next</Button>
+                    </div>
+                  )}
+                </TabsContent>
+              );
+            })}
+          </Tabs>
         </div>
       </section>
+      <div style={{ height: "2rem" }}></div>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Need Custom Solutions?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need Custom Solutions?</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Our team of experts can develop customized pharmaceutical solutions tailored to your specific requirements.
+            Our team of experts can develop customized pharmaceutical solutions tailored to your requirements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="cta" size="lg" asChild>
-              <Link to="/contact">
-                Discuss Requirements <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              <Link to="/contact">Discuss Requirements <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
             <Button variant="outline" size="lg" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
-              <Link to="/blogs">
-                <Download className="mr-2 h-5 w-5" />
-                Read Blogs
-              </Link>
+              <Link to="/blogs"><Download className="mr-2 h-5 w-5" /> Read Blogs</Link>
             </Button>
           </div>
         </div>
