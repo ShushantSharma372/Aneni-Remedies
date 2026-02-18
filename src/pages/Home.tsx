@@ -1,8 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/ui/footer';
 import HeroCarousel from '@/components/hero-carousel';
@@ -13,7 +10,6 @@ import manufacturing from '@/assets/manufacturing.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
 import qualityControl from '@/assets/quality-control.jpg';
 import MedicalCards from '@/components/ui/homeCard.tsx';
-import back1 from '@/assets/sample4.jpg';
 import CertificationsMarquee from '@/components/ui/certificatesMarquee';
 
 
